@@ -1,0 +1,25 @@
+{
+    "name": "hkwu/uwapi-php",
+    "description": "PHP wrapper for the University of Waterloo's Open Data API.",
+    "keywords": [
+        "uwaterloo api"
+    ],
+    "homepage": "https://github.com/hkwu/uwapi-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kelvin Wu",
+            "email": "kelvinwu1996@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^5.5",
+        "guzzlehttp/guzzle": "^6.2",
+        "vlucas/phpdotenv": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "UWaterlooAPI\\": "src/"
+        }
+    }
+}
