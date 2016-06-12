@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Requests;
 
 use GuzzleHttp\Client;
+use UWaterlooAPI\Data\APIModelFactory;
 
 require __DIR__.'/../../vendor/autoload.php';
 
@@ -22,35 +23,33 @@ class RequestClient
     /**
      * Sends a request to the API. Can take parameters to specify specific endpoints.
      *
+     * @param string $endpoint The API endpoint.
      * @param array $params Array containing parameters to be substituted into
      *   the request URL, in the order given.
+     * @param string $type The desired response format from the API.
      * @throws \GuzzleHttp\Exception\RequestException Exception thrown when Guzzle
      *   encounters an error.
-     * @return array Returns response body.
+     * @return \UWaterlooAPI\Data\APIModel Returns API model object.
      */
-    public function makeRequest($endpoint, $params = [])
+    public function makeRequest($endpoint, $params, $type)
     {
-        $responseBody = null;
-
-        $response = $this->client->get($this->buildRequest($endpoint, $params));
+        $response = $this->client->get($this->buildRequest($endpoint, $params, $type));
         $responseBody = $this->decodeResponseBody($response->getBody());
 
-        return $responseBody;
+        return APIModelFactory::makeModel($type, $responseBody);
     }
 
-    // TODO make it work with XML
-    private function buildRequest($endpoint, $params)
+    private function buildRequest($endpoint, $params, $type)
     {
         $queryStringParams = [
             'key' => $this->apiKey
         ];
 
-        return vsprintf($endpoint, $params).'.json?'.http_build_query($queryStringParams);
+        return vsprintf($endpoint, $params).'.'.$type.'?'.http_build_query($queryStringParams);
     }
 
-    // TODO make it work with XML
     private function decodeResponseBody($responseBody)
     {
-        return json_decode((string) $responseBody, true);
+        return (string) $responseBody;
     }
 }

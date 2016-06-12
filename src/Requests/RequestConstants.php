@@ -2,9 +2,11 @@
 
 namespace UWaterlooAPI\Requests;
 
-class RequestConstants
+abstract class RequestConstants
 {
     const BASE_API_URL = 'https://api.uwaterloo.ca/v2/';
+    const JSON = "json";
+    const XML = "xml";
 
     // food services
     const FS_MENU = 'foodservices/menu';
