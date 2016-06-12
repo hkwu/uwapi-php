@@ -4,6 +4,6 @@ namespace UWaterlooAPI\Data\JSON;
 
 abstract class JSONModelConstants
 {
-    const META = "meta";
-    const DATA = "data";
+    const KEY_META = "meta";
+    const KEY_DATA = "data";
 }

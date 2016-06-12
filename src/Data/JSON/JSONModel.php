@@ -6,32 +6,32 @@ use UWaterlooAPI\Data\APIModel;
 
 class JSONModel extends APIModel
 {
-    private $encodedData;
+    private $decodedData;
 
     public function __construct($rawData)
     {
         parent::__construct($rawData);
-        $this->encodedData = json_encode($rawData);
+        $this->decodedData = json_decode($rawData, true);
     }
 
     public function getEncodedData()
     {
-        return $this->encodedData;
+        return $this->decodedData;
     }
 
     public function getMeta()
     {
-        return $this->getJson(JSONModelConstants::META);
+        return $this->getJson(JSONModelConstants::KEY_META);
     }
 
     public function getData()
     {
-        return $this->getJson(JSONModelConstants::DATA);
+        return $this->getJson(JSONModelConstants::KEY_DATA);
     }
 
     private function getJson(...$keys)
     {
-        $val = $this->encodedData;
+        $val = $this->decodedData;
 
         foreach ($keys as $key) {
             $val = $val[$key];
