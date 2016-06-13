@@ -4,39 +4,23 @@ namespace UWaterlooAPI\Data\JSON;
 
 use UWaterlooAPI\Data\APIModel;
 
-class JSONModel extends APIModel
+abstract class JSONModel extends APIModel
 {
     private $decodedData;
 
-    public function __construct($rawData)
+    public function __construct($data)
     {
-        parent::__construct($rawData);
-        $this->decodedData = json_decode($rawData, true);
+        if (is_string($data)) {
+            parent::__construct($data);
+            $this->decodedData = json_decode($data, true);
+        } else {
+            $this->decodedData = $data;
+            parent::__construct(json_encode($data));
+        }
     }
 
-    public function getEncodedData()
+    public function getDecodedData()
     {
         return $this->decodedData;
-    }
-
-    public function getMeta()
-    {
-        return $this->getJson(JSONModelConstants::KEY_META);
-    }
-
-    public function getData()
-    {
-        return $this->getJson(JSONModelConstants::KEY_DATA);
-    }
-
-    private function getJson(...$keys)
-    {
-        $val = $this->decodedData;
-
-        foreach ($keys as $key) {
-            $val = $val[$key];
-        }
-
-        return $val;
     }
 }
