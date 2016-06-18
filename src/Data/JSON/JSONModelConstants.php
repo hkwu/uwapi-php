@@ -37,4 +37,9 @@ abstract class JSONModelConstants
     
     // diets
     const DIET_ID = 'diet_id';
+    
+    // outlets
+    const HAS_BREAKFAST = 'has_breakfast';
+    const HAS_LUNCH = 'has_lunch';
+    const HAS_DINNER = 'has_dinner';
 }
