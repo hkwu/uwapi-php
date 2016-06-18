@@ -25,6 +25,13 @@ class DietsModel extends BaseModel
         return $this->numDiets;
     }
 
+    public function getDiets()
+    {
+        return array_map(function ($element) {
+            return new DietComponent($element);
+        }, $this->getData());
+    }
+
     public function getDietByIndex($index)
     {
         return $this->getData()[$index];
@@ -50,12 +57,5 @@ class DietsModel extends BaseModel
         );
 
         return new DietComponent(reset($filtered));
-    }
-
-    public function getDiets()
-    {
-        return array_map(function ($element) {
-            return new DietComponent($element);
-        }, $this->getData());
     }
 }

@@ -23,15 +23,15 @@ class NotesModel extends BaseModel
         return $this->numNotes;
     }
 
-    public function getNoteByIndex($index)
-    {
-        return new NoteComponent($this->getData()[$index]);
-    }
-
     public function getNotes()
     {
         return array_map(function ($element) {
             return new NoteComponent($element);
         }, $this->getData());
+    }
+
+    public function getNoteByIndex($index)
+    {
+        return new NoteComponent($this->getData()[$index]);
     }
 }
