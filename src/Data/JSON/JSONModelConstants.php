@@ -27,4 +27,7 @@ abstract class JSONModelConstants
     const PRODUCT_NAME = 'product_name';
     const PRODUCT_ID = 'product_id';
     const DIET_TYPE = 'diet_type';
+
+    // notes
+    const NOTE = 'note';
 }

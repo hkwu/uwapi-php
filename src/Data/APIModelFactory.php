@@ -4,6 +4,7 @@ namespace UWaterlooAPI\Data;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\MenuModel;
+use UWaterlooAPI\Data\JSON\FoodServices\Notes\NotesModel;
 use UWaterlooAPI\Data\XML\XMLModel;
 use UWaterlooAPI\Requests\RequestClient;
 
@@ -16,6 +17,9 @@ class APIModelFactory
                 switch ($endpoint) {
                     case RequestClient::FS_MENU:
                         return new MenuModel($data);
+                    case RequestClient::FS_NOTES_YW:
+                    case RequestClient::FS_NOTES:
+                        return new NotesModel($data);
                     default:
                         return new BaseModel($data);
                 }
