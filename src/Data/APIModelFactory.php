@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
+use UWaterlooAPI\Data\JSON\FoodServices\Diets\DietsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\MenuModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Notes\NotesModel;
 use UWaterlooAPI\Data\XML\XMLModel;
@@ -20,6 +21,8 @@ class APIModelFactory
                     case RequestClient::FS_NOTES_YW:
                     case RequestClient::FS_NOTES:
                         return new NotesModel($data);
+                    case RequestClient::FS_DIETS:
+                        return new DietsModel($data);
                     default:
                         return new BaseModel($data);
                 }
