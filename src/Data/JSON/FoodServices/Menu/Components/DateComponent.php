@@ -11,7 +11,7 @@ class DateComponent extends BaseComponent
     private $year;
     private $start;
     private $end;
-    
+
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
@@ -20,22 +20,22 @@ class DateComponent extends BaseComponent
         $this->start = $decodedData[JSONModelConstants::START];
         $this->end = $decodedData[JSONModelConstants::END];
     }
-    
+
     public function getWeek()
     {
         return $this->week;
     }
-    
+
     public function getYear()
     {
         return $this->year;
     }
-    
+
     public function getStart()
     {
         return $this->start;
     }
-    
+
     public function getEnd()
     {
         return $this->end;

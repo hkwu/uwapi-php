@@ -41,7 +41,7 @@ class MealComponent extends BaseComponent
             JSONModelConstants::PRODUCT_NAME,
             $name
         );
-        
+
         return new ProductComponent(reset($filtered));
     }
 
@@ -52,7 +52,7 @@ class MealComponent extends BaseComponent
             JSONModelConstants::PRODUCT_ID,
             $id
         );
-        
+
         return new ProductComponent(reset($filtered));
     }
 }

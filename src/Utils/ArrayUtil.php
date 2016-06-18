@@ -16,9 +16,10 @@ class ArrayUtil
     /**
      * Filters elements from an array of associative arrays that don't contain a certain key/value pair.
      *
-     * @param array $array The array of associative arrays to filter.
-     * @param mixed $prop The key to filter by.
+     * @param array $array       The array of associative arrays to filter.
+     * @param mixed $prop        The key to filter by.
      * @param mixed $expectedVal The expected value which given key maps to.
+     *
      * @return array The filtered array.
      */
     public static function filterByProperty(array $array, $prop, $expectedVal)

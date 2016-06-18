@@ -34,7 +34,7 @@ class RequestClient
     {
         $this->apiKey = $apiKey;
         $this->client = new Client([
-            'base_uri' => self::BASE_API_URL
+            'base_uri' => self::BASE_API_URL,
         ]);
     }
 
@@ -42,11 +42,12 @@ class RequestClient
      * Sends a request to the API. Can take parameters to specify specific endpoints.
      *
      * @param string $endpoint The API endpoint.
-     * @param array $params Array containing parameters to be substituted into
-     *   the request URL, in the order given.
-     * @param string $format The desired response format from the API.
-     * @throws \GuzzleHttp\Exception\RequestException Exception thrown when Guzzle
-     *   encounters an error.
+     * @param array  $params   Array containing parameters to be substituted into
+     *                         the request URL, in the order given.
+     * @param string $format   The desired response format from the API.
+     *
+     * @throws \GuzzleHttp\Exception\RequestException Exception thrown when Guzzle encounters an error.
+     *
      * @return \UWaterlooAPI\Data\APIModel Returns API model object.
      */
     public function makeRequest($endpoint, array $params, $format)
@@ -60,7 +61,7 @@ class RequestClient
     private function buildRequest($endpoint, array $params, $format)
     {
         $queryStringParams = [
-            'key' => $this->apiKey
+            'key' => $this->apiKey,
         ];
 
         return vsprintf($endpoint, $params).'.'.$format.'?'.http_build_query($queryStringParams);

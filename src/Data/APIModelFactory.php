@@ -22,7 +22,7 @@ class APIModelFactory
             case RequestClient::XML:
                 return new XMLModel($data);
             default:
-                return null;
+                return;
         }
     }
 }
