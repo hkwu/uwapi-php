@@ -3,7 +3,7 @@
 namespace UWaterlooAPI\Data\JSON\FoodServices\Outlets;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
-use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
+use UWaterlooAPI\Data\JSON\Common\Components\ComponentFactory;
 use UWaterlooAPI\Data\JSON\FoodServices\Outlets\Components\OutletComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
 use UWaterlooAPI\Utils\ArrayUtil;

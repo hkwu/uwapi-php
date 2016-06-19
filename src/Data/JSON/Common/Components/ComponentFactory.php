@@ -1,6 +1,6 @@
 <?php
 
-namespace UWaterlooAPI\Data\JSON\Common;
+namespace UWaterlooAPI\Data\JSON\Common\Components;
 
 class ComponentFactory
 {

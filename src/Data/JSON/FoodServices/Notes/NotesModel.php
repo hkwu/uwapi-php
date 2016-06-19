@@ -3,7 +3,7 @@
 namespace UWaterlooAPI\Data\JSON\FoodServices\Notes;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
-use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
+use UWaterlooAPI\Data\JSON\Common\Components\ComponentFactory;
 use UWaterlooAPI\Data\JSON\FoodServices\Notes\Components\NoteComponent;
 
 class NotesModel extends BaseModel
