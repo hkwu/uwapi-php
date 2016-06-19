@@ -36,14 +36,6 @@ class OutletComponent extends BaseComponent
         return $this->numMenus;
     }
 
-    public function getMenus()
-    {
-        return ComponentFactory::buildComponents(
-            $this->get(JSONModelConstants::MENU),
-            MenuComponent::class
-        );
-    }
-
     public function getMenuByIndex($index)
     {
         return ComponentFactory::buildComponent(
@@ -61,5 +53,13 @@ class OutletComponent extends BaseComponent
         );
 
         return ComponentFactory::buildComponentArray($filtered, MenuComponent::class);
+    }
+
+    public function getMenus()
+    {
+        return ComponentFactory::buildComponents(
+            $this->get(JSONModelConstants::MENU),
+            MenuComponent::class
+        );
     }
 }

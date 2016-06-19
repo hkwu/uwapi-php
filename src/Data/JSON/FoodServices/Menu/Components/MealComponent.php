@@ -22,11 +22,6 @@ class MealComponent extends BaseComponent
         return $this->numProducts;
     }
 
-    public function getProducts()
-    {
-        return ComponentFactory::buildComponents($this->getDecodedData(), ProductComponent::class);
-    }
-
     public function getProductByIndex($index)
     {
         return ComponentFactory::buildComponent($this->getDecodedData()[$index], ProductComponent::class);
@@ -52,5 +47,10 @@ class MealComponent extends BaseComponent
         );
 
         return ComponentFactory::buildComponentArray($filtered, ProductComponent::class);
+    }
+
+    public function getProducts()
+    {
+        return ComponentFactory::buildComponents($this->getDecodedData(), ProductComponent::class);
     }
 }

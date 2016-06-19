@@ -26,11 +26,6 @@ class DietsModel extends BaseModel
         return $this->numDiets;
     }
 
-    public function getDiets()
-    {
-        return ComponentFactory::buildComponents($this->getData(), DietComponent::class);
-    }
-
     public function getDietByIndex($index)
     {
         return ComponentFactory::buildComponent($this->getData()[$index], DietComponent::class);
@@ -56,5 +51,10 @@ class DietsModel extends BaseModel
         );
 
         return ComponentFactory::buildComponentArray($filtered, DietComponent::class);
+    }
+
+    public function getDiets()
+    {
+        return ComponentFactory::buildComponents($this->getData(), DietComponent::class);
     }
 }

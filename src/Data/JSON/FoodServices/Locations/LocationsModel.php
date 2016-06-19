@@ -26,11 +26,6 @@ class LocationsModel extends BaseModel
         return $this->numLocations;
     }
 
-    public function getLocations()
-    {
-        return ComponentFactory::buildComponents($this->getData(), LocationComponent::class);
-    }
-
     public function getLocationByIndex($index)
     {
         return ComponentFactory::buildComponent($this->getData()[$index], LocationComponent::class);
@@ -48,5 +43,10 @@ class LocationsModel extends BaseModel
         $filtered = ArrayUtil::filterByProperty($this->getData(), JSONModelConstants::OUTLET_NAME, $name);
 
         return ComponentFactory::buildComponentArray($filtered, LocationComponent::class);
+    }
+
+    public function getLocations()
+    {
+        return ComponentFactory::buildComponents($this->getData(), LocationComponent::class);
     }
 }

@@ -32,14 +32,6 @@ class MenuModel extends BaseModel
         );
     }
 
-    public function getOutlets()
-    {
-        return ComponentFactory::buildComponents(
-            $this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS),
-            OutletComponent::class
-        );
-    }
-
     public function getOutletByIndex($index)
     {
         return ComponentFactory::buildComponent(
@@ -68,5 +60,13 @@ class MenuModel extends BaseModel
         );
 
         return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
+    }
+
+    public function getOutlets()
+    {
+        return ComponentFactory::buildComponents(
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS),
+            OutletComponent::class
+        );
     }
 }

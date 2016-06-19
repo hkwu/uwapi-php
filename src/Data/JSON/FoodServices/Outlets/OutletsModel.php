@@ -26,11 +26,6 @@ class OutletsModel extends BaseModel
         return $this->numOutlets;
     }
 
-    public function getOutlets()
-    {
-        return ComponentFactory::buildComponents($this->getData(), OutletComponent::class);
-    }
-
     public function getOutletByIndex($index)
     {
         return $this->getData()[$index];
@@ -56,5 +51,10 @@ class OutletsModel extends BaseModel
         );
 
         return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
+    }
+
+    public function getOutlets()
+    {
+        return ComponentFactory::buildComponents($this->getData(), OutletComponent::class);
     }
 }
