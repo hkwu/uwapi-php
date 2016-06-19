@@ -12,6 +12,7 @@ abstract class JSONModelConstants
      * Food Services
      */
     const DATE = 'date';
+    const DIET_ID = 'diet_id';
     const DIET_TYPE = 'diet_type';
     const OUTLET_NAME = 'outlet_name';
     const OUTLET_ID = 'outlet_id';
@@ -37,9 +38,6 @@ abstract class JSONModelConstants
 
     // notes
     const NOTE = 'note';
-
-    // diets
-    const DIET_ID = 'diet_id';
 
     // outlets
     const HAS_BREAKFAST = 'has_breakfast';
@@ -75,4 +73,32 @@ abstract class JSONModelConstants
 
     // announcements
     const AD_TEXT = 'ad_text';
+
+    // products
+    const INGREDIENTS = 'ingredients';
+    const SERVING_SIZE = 'serving_size';
+    const SERVING_SIZE_ML = 'serving_size_ml';
+    const SERVING_SIZE_G = 'serving_size_g';
+    const CALORIES = 'calories';
+    const TOTAL_FAT_G = 'total_fat_g';
+    const TOTAL_FAT_PERCENT = 'total_fat_percent';
+    const FAT_SATURATED_G = 'fat_saturated_g';
+    const FAT_SATURATED_PERCENT = 'fat_saturated_percent';
+    const FAT_TRANS_G = 'fat_trans_g';
+    const FAT_TRANS_PERCENT = 'fat_trans_percent';
+    const CHOLESTEROL_MG = 'cholesterol_mg';
+    const SODIUM_MG = 'sodium_mg';
+    const SODIUM_PERCENT = 'sodium_percent';
+    const CARBO_G = 'carbo_g';
+    const CARBO_PERCENT = 'carbo_percent';
+    const CARBO_FIBRE_G = 'carbo_fibre_g';
+    const CARBO_FIBRE_PERCENT = 'carbo_fibre_percent';
+    const CARBO_SUGARS_G = 'carbo_sugars_g';
+    const PROTEIN_G = 'protein_g';
+    const VITAMIN_A_PERCENT = 'vitamin_a_percent';
+    const VITAMIN_C_PERCENT = 'vitamin_c_percent';
+    const CALCIUM_PERCENT = 'calcium_percent';
+    const IRON_PERCENT = 'iron_percent';
+    const MICRO_NUTRIENTS = 'micro_nutrients';
+    const TIPS = 'tips';
 }

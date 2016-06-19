@@ -9,6 +9,7 @@ use UWaterlooAPI\Data\JSON\FoodServices\Locations\LocationsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\MenuModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Notes\NotesModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Outlets\OutletsModel;
+use UWaterlooAPI\Data\JSON\FoodServices\Products\ProductsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\WatCard\WatCardModel;
 use UWaterlooAPI\Data\XML\XMLModel;
 use UWaterlooAPI\Requests\RequestClient;
@@ -37,6 +38,8 @@ class APIModelFactory
                     case RequestClient::FS_ANNOUNCEMENTS_YW:
                     case RequestClient::FS_ANNOUNCEMENTS:
                         return new AnnouncementsModel($data);
+                    case RequestClient::FS_PRODUCTS:
+                        return new ProductsModel($data);
                     default:
                         return new BaseModel($data);
                 }
