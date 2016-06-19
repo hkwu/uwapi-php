@@ -10,7 +10,7 @@ use UWaterlooAPI\Data\JSON\FoodServices\Outlets\OutletsModel;
 use UWaterlooAPI\Data\XML\XMLModel;
 use UWaterlooAPI\Requests\RequestClient;
 
-class APIModelFactory
+abstract class APIModelFactory
 {
     public static function makeModel($format, $endpoint, $data)
     {
