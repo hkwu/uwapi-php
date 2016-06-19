@@ -44,7 +44,7 @@ class OutletsModel extends BaseModel
             $id
         );
         
-        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
     }
     
     public function getOutletByName($name)
@@ -55,6 +55,6 @@ class OutletsModel extends BaseModel
             $name
         );
 
-        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
     }
 }

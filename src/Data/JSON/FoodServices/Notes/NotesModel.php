@@ -31,6 +31,6 @@ class NotesModel extends BaseModel
 
     public function getNoteByIndex($index)
     {
-        return new NoteComponent($this->getData()[$index]);
+        return ComponentFactory::buildComponent($this->getData()[$index], NoteComponent::class);
     }
 }

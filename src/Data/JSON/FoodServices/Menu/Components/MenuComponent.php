@@ -2,6 +2,7 @@
 
 namespace UWaterlooAPI\Data\JSON\FoodServices\Menu\Components;
 
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\Common\Components\BaseComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
 use UWaterlooAPI\Utils\ArrayUtil;
@@ -44,29 +45,28 @@ class MenuComponent extends BaseComponent
 
     public function getBreakfast()
     {
-        // todo exceptions
-        return new MealComponent(ArrayUtil::getVal(
+        return ComponentFactory::buildComponent(ArrayUtil::getVal(
             $this->getDecodedData(),
             JSONModelConstants::MEALS,
             JSONModelConstants::BREAKFAST
-        ));
+        ), MealComponent::class);
     }
 
     public function getLunch()
     {
-        return new MealComponent(ArrayUtil::getVal(
+        return ComponentFactory::buildComponent(ArrayUtil::getVal(
             $this->getDecodedData(),
             JSONModelConstants::MEALS,
             JSONModelConstants::LUNCH
-        ));
+        ), MealComponent::class);
     }
 
     public function getDinner()
     {
-        return new MealComponent(ArrayUtil::getVal(
+        return ComponentFactory::buildComponent(ArrayUtil::getVal(
             $this->getDecodedData(),
             JSONModelConstants::MEALS,
             JSONModelConstants::DINNER
-        ));
+        ), MealComponent::class);
     }
 }

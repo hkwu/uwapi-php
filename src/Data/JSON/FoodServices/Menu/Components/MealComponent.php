@@ -29,7 +29,7 @@ class MealComponent extends BaseComponent
 
     public function getProductByIndex($index)
     {
-        return new ProductComponent($this->getDecodedData()[$index]);
+        return ComponentFactory::buildComponent($this->getDecodedData()[$index], ProductComponent::class);
     }
 
     public function getProductByName($name)
@@ -40,7 +40,7 @@ class MealComponent extends BaseComponent
             $name
         );
 
-        return ComponentFactory::buildComponent($filtered, ProductComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, ProductComponent::class);
     }
 
     public function getProductById($id)
@@ -51,6 +51,6 @@ class MealComponent extends BaseComponent
             $id
         );
 
-        return ComponentFactory::buildComponent($filtered, ProductComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, ProductComponent::class);
     }
 }

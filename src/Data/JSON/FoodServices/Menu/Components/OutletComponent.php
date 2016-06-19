@@ -38,12 +38,18 @@ class OutletComponent extends BaseComponent
 
     public function getMenus()
     {
-        return ComponentFactory::buildComponents($this->getDecodedData()[JSONModelConstants::MENU], MenuComponent::class);
+        return ComponentFactory::buildComponents(
+            $this->getDecodedData()[JSONModelConstants::MENU], 
+            MenuComponent::class
+        );
     }
 
     public function getMenuByIndex($index)
     {
-        return new MenuComponent(ArrayUtil::getVal($this->getDecodedData(), JSONModelConstants::MENU, $index));
+        return ComponentFactory::buildComponent(
+            ArrayUtil::getVal($this->getDecodedData(), JSONModelConstants::MENU, $index),
+            MenuComponent::class
+        );
     }
 
     public function getMenuByDay($day)
@@ -54,6 +60,6 @@ class OutletComponent extends BaseComponent
             $day
         );
 
-        return ComponentFactory::buildComponent($filtered, MenuComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, MenuComponent::class);
     }
 }

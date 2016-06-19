@@ -21,7 +21,10 @@ class MenuModel extends BaseModel
 
     public function getDate()
     {
-        return new DateComponent($this->getData()[JSONModelConstants::DATE]);
+        return ComponentFactory::buildComponent(
+            $this->getData()[JSONModelConstants::DATE], 
+            DateComponent::class
+        );
     }
 
     public function getNumOutlets()
@@ -31,12 +34,18 @@ class MenuModel extends BaseModel
 
     public function getOutlets()
     {
-        return ComponentFactory::buildComponents($this->getData()[JSONModelConstants::OUTLETS], OutletComponent::class);
+        return ComponentFactory::buildComponents(
+            $this->getData()[JSONModelConstants::OUTLETS],
+            OutletComponent::class
+        );
     }
 
     public function getOutletByIndex($index)
     {
-        return new OutletComponent(ArrayUtil::getVal($this->getData(), JSONModelConstants::OUTLETS, $index));
+        return ComponentFactory::buildComponent(
+            ArrayUtil::getVal($this->getData(), JSONModelConstants::OUTLETS, $index), 
+            OutletComponent::class
+        );
     }
 
     public function getOutletById($id)
@@ -47,7 +56,7 @@ class MenuModel extends BaseModel
             $id
         );
 
-        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
     }
 
     public function getOutletByName($name)
@@ -58,6 +67,6 @@ class MenuModel extends BaseModel
             $name
         );
 
-        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
+        return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
     }
 }
