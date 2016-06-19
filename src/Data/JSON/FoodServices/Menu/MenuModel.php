@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data\JSON\FoodServices\Menu;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\Components\DateComponent;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\Components\OutletComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
@@ -48,7 +49,7 @@ class MenuModel extends BaseModel
             $id
         );
 
-        return new OutletComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
     }
 
     public function getOutletByName($name)
@@ -59,6 +60,6 @@ class MenuModel extends BaseModel
             $name
         );
 
-        return new OutletComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
     }
 }

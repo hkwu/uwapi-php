@@ -2,6 +2,7 @@
 
 namespace UWaterlooAPI\Data\JSON\FoodServices\Menu\Components;
 
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\Common\Components\BaseComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
 use UWaterlooAPI\Utils\ArrayUtil;
@@ -55,6 +56,6 @@ class OutletComponent extends BaseComponent
             $day
         );
 
-        return new MenuComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, MenuComponent::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data\JSON\FoodServices\Outlets;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\FoodServices\Outlets\Components\OutletComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
 use UWaterlooAPI\Utils\ArrayUtil;
@@ -44,8 +45,8 @@ class OutletsModel extends BaseModel
             JSONModelConstants::OUTLET_ID,
             $id
         );
-
-        return new OutletComponent(reset($filtered));
+        
+        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
     }
     
     public function getOutletByName($name)
@@ -56,6 +57,6 @@ class OutletsModel extends BaseModel
             $name
         );
 
-        return new OutletComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, OutletComponent::class);
     }
 }

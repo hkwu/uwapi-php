@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data\JSON\FoodServices\Diets;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\FoodServices\Diets\Components\DietComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
 use UWaterlooAPI\Utils\ArrayUtil;
@@ -45,7 +46,7 @@ class DietsModel extends BaseModel
             $id
         );
 
-        return new DietComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, DietComponent::class);
     }
 
     public function getDietByType($id)
@@ -56,6 +57,6 @@ class DietsModel extends BaseModel
             $id
         );
 
-        return new DietComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, DietComponent::class);
     }
 }
