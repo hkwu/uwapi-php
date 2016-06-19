@@ -15,6 +15,9 @@ abstract class JSONModelConstants
     const DIET_TYPE = 'diet_type';
     const OUTLET_NAME = 'outlet_name';
     const OUTLET_ID = 'outlet_id';
+    const LATITUDE = 'latitude';
+    const LONGITUDE = 'longitude';
+    const LOGO = 'logo';
 
     // menu
     const WEEK = 'week';
@@ -45,9 +48,6 @@ abstract class JSONModelConstants
 
     // locations
     const BUILDING = 'building';
-    const LOGO = 'logo';
-    const LATITUDE = 'latitude';
-    const LONGITUDE = 'longitude';
     const DESCRIPTION = 'description';
     const NOTICE = 'notice';
     const IS_OPEN_NOW = 'is_open_now';
@@ -66,4 +66,10 @@ abstract class JSONModelConstants
     const OPENING_HOUR = 'opening_hour';
     const CLOSING_HOUR = 'closing_hour';
     const IS_CLOSED = 'is_closed';
+    
+    // WatCard
+    const VENDOR_ID = 'vendor_id';
+    const VENDOR_NAME = 'vendor_name';
+    const ADDRESS = 'address';
+    const PHONE_NUMBER = 'phone_number';
 }
