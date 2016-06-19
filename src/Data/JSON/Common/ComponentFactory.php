@@ -2,7 +2,7 @@
 
 namespace UWaterlooAPI\Data\JSON\Common;
 
-abstract class ComponentFactory
+class ComponentFactory
 {
     /**
      * Builds the given component using the given array as the data input.

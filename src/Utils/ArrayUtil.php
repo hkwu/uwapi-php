@@ -7,6 +7,10 @@ class ArrayUtil
     public static function getVal(array $array, ...$keys)
     {
         foreach ($keys as $key) {
+            if (!isset($array[$key])) {
+                return null;
+            }
+
             $array = $array[$key];
         }
 
