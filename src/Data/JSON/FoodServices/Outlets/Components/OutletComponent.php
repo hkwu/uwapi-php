@@ -16,11 +16,11 @@ class OutletComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->outletId = $decodedData[JSONModelConstants::OUTLET_ID];
-        $this->outletName = $decodedData[JSONModelConstants::OUTLET_NAME];
-        $this->hasBreakfast = $decodedData[JSONModelConstants::HAS_BREAKFAST];
-        $this->hasLunch = $decodedData[JSONModelConstants::HAS_LUNCH];
-        $this->hasDinner = $decodedData[JSONModelConstants::HAS_DINNER];
+        $this->outletId = $this->get(JSONModelConstants::OUTLET_ID);
+        $this->outletName = $this->get(JSONModelConstants::OUTLET_NAME);
+        $this->hasBreakfast = $this->get(JSONModelConstants::HAS_BREAKFAST);
+        $this->hasLunch = $this->get(JSONModelConstants::HAS_LUNCH);
+        $this->hasDinner = $this->get(JSONModelConstants::HAS_DINNER);
     }
 
     /**

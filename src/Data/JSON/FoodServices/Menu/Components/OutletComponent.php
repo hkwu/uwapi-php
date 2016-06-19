@@ -16,9 +16,9 @@ class OutletComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->outletName = $decodedData[JSONModelConstants::OUTLET_NAME];
-        $this->outletId = $decodedData[JSONModelConstants::OUTLET_ID];
-        $this->numMenus = count($decodedData[JSONModelConstants::MENU]);
+        $this->outletName = $this->get(JSONModelConstants::OUTLET_NAME);
+        $this->outletId = $this->get(JSONModelConstants::OUTLET_ID);
+        $this->numMenus = count($this->get(JSONModelConstants::MENU));
     }
 
     public function getOutletName()
@@ -39,7 +39,7 @@ class OutletComponent extends BaseComponent
     public function getMenus()
     {
         return ComponentFactory::buildComponents(
-            $this->getDecodedData()[JSONModelConstants::MENU], 
+            $this->get(JSONModelConstants::MENU),
             MenuComponent::class
         );
     }
@@ -47,7 +47,7 @@ class OutletComponent extends BaseComponent
     public function getMenuByIndex($index)
     {
         return ComponentFactory::buildComponent(
-            ArrayUtil::getVal($this->getDecodedData(), JSONModelConstants::MENU, $index),
+            $this->get(JSONModelConstants::MENU, $index),
             MenuComponent::class
         );
     }
@@ -55,7 +55,7 @@ class OutletComponent extends BaseComponent
     public function getMenuByDay($day)
     {
         $filtered = ArrayUtil::filterByProperty(
-            $this->getDecodedData()[JSONModelConstants::MENU],
+            $this->get(JSONModelConstants::MENU),
             JSONModelConstants::DAY,
             $day
         );

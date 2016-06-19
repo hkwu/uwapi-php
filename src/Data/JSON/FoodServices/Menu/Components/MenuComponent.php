@@ -17,10 +17,10 @@ class MenuComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->date = $decodedData[JSONModelConstants::DATE];
-        $this->day = $decodedData[JSONModelConstants::DAY];
-        $this->notes = $decodedData[JSONModelConstants::NOTES];
-        $this->numMeals = count($decodedData[JSONModelConstants::MEALS]);
+        $this->date = $this->get(JSONModelConstants::DATE);
+        $this->day = $this->get(JSONModelConstants::DAY);
+        $this->notes = $this->get(JSONModelConstants::NOTES);
+        $this->numMeals = count($this->get(JSONModelConstants::MEALS));
     }
 
     public function getDate()
@@ -45,8 +45,7 @@ class MenuComponent extends BaseComponent
 
     public function getBreakfast()
     {
-        return ComponentFactory::buildComponent(ArrayUtil::getVal(
-            $this->getDecodedData(),
+        return ComponentFactory::buildComponent($this->get(
             JSONModelConstants::MEALS,
             JSONModelConstants::BREAKFAST
         ), MealComponent::class);
@@ -54,8 +53,7 @@ class MenuComponent extends BaseComponent
 
     public function getLunch()
     {
-        return ComponentFactory::buildComponent(ArrayUtil::getVal(
-            $this->getDecodedData(),
+        return ComponentFactory::buildComponent($this->get(
             JSONModelConstants::MEALS,
             JSONModelConstants::LUNCH
         ), MealComponent::class);
@@ -63,8 +61,7 @@ class MenuComponent extends BaseComponent
 
     public function getDinner()
     {
-        return ComponentFactory::buildComponent(ArrayUtil::getVal(
-            $this->getDecodedData(),
+        return ComponentFactory::buildComponent($this->get(
             JSONModelConstants::MEALS,
             JSONModelConstants::DINNER
         ), MealComponent::class);

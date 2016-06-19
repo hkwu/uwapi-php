@@ -14,9 +14,9 @@ class ProductComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->productName = $decodedData[JSONModelConstants::PRODUCT_NAME];
-        $this->productId = $decodedData[JSONModelConstants::PRODUCT_ID];
-        $this->dietType = $decodedData[JSONModelConstants::DIET_TYPE];
+        $this->productName = $this->get(JSONModelConstants::PRODUCT_NAME);
+        $this->productId = $this->get(JSONModelConstants::PRODUCT_ID);
+        $this->dietType = $this->get(JSONModelConstants::DIET_TYPE);
     }
 
     public function getProductName()

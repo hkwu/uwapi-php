@@ -13,8 +13,8 @@ class DietComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->dietId = $decodedData[JSONModelConstants::DIET_ID];
-        $this->dietType = $decodedData[JSONModelConstants::DIET_TYPE];
+        $this->dietId = $this->get(JSONModelConstants::DIET_ID);
+        $this->dietType = $this->get(JSONModelConstants::DIET_TYPE);
     }
 
     /**

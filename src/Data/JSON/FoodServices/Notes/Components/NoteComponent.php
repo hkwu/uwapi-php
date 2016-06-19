@@ -15,10 +15,10 @@ class NoteComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->date = $decodedData[JSONModelConstants::DATE];
-        $this->outletName = $decodedData[JSONModelConstants::OUTLET_NAME];
-        $this->outletId = $decodedData[JSONModelConstants::OUTLET_ID];
-        $this->note = $decodedData[JSONModelConstants::NOTE];
+        $this->date = $this->get(JSONModelConstants::DATE);
+        $this->outletName = $this->get(JSONModelConstants::OUTLET_NAME);
+        $this->outletId = $this->get(JSONModelConstants::OUTLET_ID);
+        $this->note = $this->get(JSONModelConstants::NOTE);
     }
 
     /**

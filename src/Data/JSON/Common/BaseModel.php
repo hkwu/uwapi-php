@@ -14,11 +14,11 @@ class BaseModel extends JSONModel
 
     public function getMeta()
     {
-        return $this->getDecodedData()[JSONModelConstants::META];
+        return $this->get(JSONModelConstants::META);
     }
 
     public function getData()
     {
-        return $this->getDecodedData()[JSONModelConstants::DATA];
+        return $this->get(JSONModelConstants::DATA);
     }
 }

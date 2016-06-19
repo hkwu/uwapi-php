@@ -16,13 +16,13 @@ class MenuModel extends BaseModel
     public function __construct($rawData)
     {
         parent::__construct($rawData);
-        $this->numOutlets = count($this->getData()[JSONModelConstants::OUTLETS]);
+        $this->numOutlets = count($this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS));
     }
 
     public function getDate()
     {
         return ComponentFactory::buildComponent(
-            $this->getData()[JSONModelConstants::DATE], 
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::DATE), 
             DateComponent::class
         );
     }
@@ -35,7 +35,7 @@ class MenuModel extends BaseModel
     public function getOutlets()
     {
         return ComponentFactory::buildComponents(
-            $this->getData()[JSONModelConstants::OUTLETS],
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS),
             OutletComponent::class
         );
     }
@@ -43,7 +43,7 @@ class MenuModel extends BaseModel
     public function getOutletByIndex($index)
     {
         return ComponentFactory::buildComponent(
-            ArrayUtil::getVal($this->getData(), JSONModelConstants::OUTLETS, $index), 
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS, $index),
             OutletComponent::class
         );
     }
@@ -51,7 +51,7 @@ class MenuModel extends BaseModel
     public function getOutletById($id)
     {
         $filtered = ArrayUtil::filterByProperty(
-            $this->getData()[JSONModelConstants::OUTLETS],
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS),
             JSONModelConstants::OUTLET_ID,
             $id
         );
@@ -62,7 +62,7 @@ class MenuModel extends BaseModel
     public function getOutletByName($name)
     {
         $filtered = ArrayUtil::filterByProperty(
-            $this->getData()[JSONModelConstants::OUTLETS],
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS),
             JSONModelConstants::OUTLET_NAME,
             $name
         );

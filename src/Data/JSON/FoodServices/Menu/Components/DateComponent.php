@@ -15,10 +15,10 @@ class DateComponent extends BaseComponent
     public function __construct(array $decodedData)
     {
         parent::__construct($decodedData);
-        $this->week = $decodedData[JSONModelConstants::WEEK];
-        $this->year = $decodedData[JSONModelConstants::YEAR];
-        $this->start = $decodedData[JSONModelConstants::START];
-        $this->end = $decodedData[JSONModelConstants::END];
+        $this->week = $this->get(JSONModelConstants::WEEK);
+        $this->year = $this->get(JSONModelConstants::YEAR);
+        $this->start = $this->get(JSONModelConstants::START);
+        $this->end = $this->get(JSONModelConstants::END);
     }
 
     public function getWeek()
