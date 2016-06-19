@@ -36,14 +36,14 @@ class LocationsModel extends BaseModel
         return ComponentFactory::buildComponent($this->getData()[$index], LocationComponent::class);
     }
 
-    public function getOutletById($id)
+    public function getLocationById($id)
     {
         $filtered = ArrayUtil::filterByProperty($this->getData(), JSONModelConstants::OUTLET_ID, $id);
 
         return ComponentFactory::buildComponentArray($filtered, LocationComponent::class);
     }
 
-    public function getOutletByName($name)
+    public function getLocationByName($name)
     {
         $filtered = ArrayUtil::filterByProperty($this->getData(), JSONModelConstants::OUTLET_NAME, $name);
 
