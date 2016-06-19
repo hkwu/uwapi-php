@@ -20,6 +20,7 @@ class APIModelFactory
         switch ($format) {
             case RequestClient::JSON:
                 switch ($endpoint) {
+                    case RequestClient::FS_MENU_YW:
                     case RequestClient::FS_MENU:
                         return new MenuModel($data);
                     case RequestClient::FS_NOTES_YW:
