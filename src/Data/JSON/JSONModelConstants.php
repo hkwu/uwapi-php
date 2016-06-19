@@ -66,10 +66,13 @@ abstract class JSONModelConstants
     const OPENING_HOUR = 'opening_hour';
     const CLOSING_HOUR = 'closing_hour';
     const IS_CLOSED = 'is_closed';
-    
+
     // WatCard
     const VENDOR_ID = 'vendor_id';
     const VENDOR_NAME = 'vendor_name';
     const ADDRESS = 'address';
     const PHONE_NUMBER = 'phone_number';
+
+    // announcements
+    const AD_TEXT = 'ad_text';
 }

@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
+use UWaterlooAPI\Data\JSON\FoodServices\Announcements\AnnouncementsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Diets\DietsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Locations\LocationsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\MenuModel;
@@ -32,6 +33,9 @@ class APIModelFactory
                         return new LocationsModel($data);
                     case RequestClient::FS_WATCARD:
                         return new WatCardModel($data);
+                    case RequestClient::FS_ANNOUNCEMENTS_YW:
+                    case RequestClient::FS_ANNOUNCEMENTS:
+                        return new AnnouncementsModel($data);
                     default:
                         return new BaseModel($data);
                 }
