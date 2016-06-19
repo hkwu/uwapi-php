@@ -19,17 +19,17 @@ class MenuModel extends BaseModel
         $this->numOutlets = count($this->get(JSONModelConstants::DATA, JSONModelConstants::OUTLETS));
     }
 
+    public function getNumOutlets()
+    {
+        return $this->numOutlets;
+    }
+
     public function getDate()
     {
         return ComponentFactory::buildComponent(
             $this->get(JSONModelConstants::DATA, JSONModelConstants::DATE), 
             DateComponent::class
         );
-    }
-
-    public function getNumOutlets()
-    {
-        return $this->numOutlets;
     }
 
     public function getOutlets()
