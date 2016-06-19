@@ -18,6 +18,8 @@ class LocationComponent extends BaseComponent
     private $notice;
     private $isOpenNow;
     private $is24Hrs;
+    private $numSpecialHours;
+    private $numDatesClosed;
 
     public function __construct(array $decodedData)
     {
@@ -32,6 +34,8 @@ class LocationComponent extends BaseComponent
         $this->notice = $this->get(JSONModelConstants::NOTICE);
         $this->isOpenNow = $this->get(JSONModelConstants::IS_OPEN_NOW);
         $this->is24Hrs = $this->get(JSONModelConstants::IS_24_HRS);
+        $this->numSpecialHours = count($this->get(JSONModelConstants::SPECIAL_HOURS));
+        $this->numDatesClosed = count($this->get(JSONModelConstants::DATES_CLOSED));
     }
 
     /**
@@ -112,6 +116,22 @@ class LocationComponent extends BaseComponent
     public function getIs24Hrs()
     {
         return $this->is24Hrs;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumSpecialHours()
+    {
+        return $this->numSpecialHours;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumDatesClosed()
+    {
+        return $this->numDatesClosed;
     }
 
     public function getSundayHours()
