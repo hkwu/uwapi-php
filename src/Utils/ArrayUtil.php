@@ -4,7 +4,7 @@ namespace UWaterlooAPI\Utils;
 
 class ArrayUtil
 {
-    public static function getVal(array $array, ...$keys)
+    public static function getVal(array $array, $keys)
     {
         foreach ($keys as $key) {
             if (!isset($array[$key])) {

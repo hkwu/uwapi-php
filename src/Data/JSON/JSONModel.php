@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data\JSON;
 
 use UWaterlooAPI\Data\APIModel;
+use UWaterlooAPI\Utils\ArrayUtil;
 
 abstract class JSONModel extends APIModel
 {
@@ -22,5 +23,16 @@ abstract class JSONModel extends APIModel
     public function getDecodedData()
     {
         return $this->decodedData;
+    }
+
+    /**
+     * Wrapper method to return data from the model's decoded JSON.
+     *
+     * @param array ...$keys Set of keys to access the decoded data.
+     * @return mixed|null Returns value if found, else null.
+     */
+    public function get(...$keys)
+    {
+        return ArrayUtil::getVal($this->decodedData, $keys);
     }
 }
