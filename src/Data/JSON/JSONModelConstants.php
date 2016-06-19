@@ -19,6 +19,8 @@ abstract class JSONModelConstants
     const LATITUDE = 'latitude';
     const LONGITUDE = 'longitude';
     const LOGO = 'logo';
+    const PRODUCT_NAME = 'product_name';
+    const PRODUCT_ID = 'product_id';
 
     // menu
     const WEEK = 'week';
@@ -33,8 +35,6 @@ abstract class JSONModelConstants
     const BREAKFAST = 'breakfast';
     const LUNCH = 'lunch';
     const DINNER = 'dinner';
-    const PRODUCT_NAME = 'product_name';
-    const PRODUCT_ID = 'product_id';
 
     // notes
     const NOTE = 'note';
