@@ -28,9 +28,7 @@ class OutletsModel extends BaseModel
 
     public function getOutlets()
     {
-        return array_map(function ($element) {
-            return new OutletComponent($element);
-        }, $this->getData());
+        return ComponentFactory::buildComponents($this->getData(), OutletComponent::class);
     }
 
     public function getOutletByIndex($index)

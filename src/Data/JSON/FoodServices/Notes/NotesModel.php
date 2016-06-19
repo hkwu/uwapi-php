@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Data\JSON\FoodServices\Notes;
 
 use UWaterlooAPI\Data\JSON\Common\BaseModel;
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\FoodServices\Notes\Components\NoteComponent;
 
 class NotesModel extends BaseModel
@@ -25,9 +26,7 @@ class NotesModel extends BaseModel
 
     public function getNotes()
     {
-        return array_map(function ($element) {
-            return new NoteComponent($element);
-        }, $this->getData());
+        return ComponentFactory::buildComponents($this->getData(), NoteComponent::class);
     }
 
     public function getNoteByIndex($index)

@@ -28,9 +28,7 @@ class DietsModel extends BaseModel
 
     public function getDiets()
     {
-        return array_map(function ($element) {
-            return new DietComponent($element);
-        }, $this->getData());
+        return ComponentFactory::buildComponents($this->getData(), DietComponent::class);
     }
 
     public function getDietByIndex($index)

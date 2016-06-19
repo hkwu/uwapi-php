@@ -31,9 +31,7 @@ class MenuModel extends BaseModel
 
     public function getOutlets()
     {
-        return array_map(function ($element) {
-            return new OutletComponent($element);
-        }, $this->getData()[JSONModelConstants::OUTLETS]);
+        return ComponentFactory::buildComponents($this->getData()[JSONModelConstants::OUTLETS], OutletComponent::class);
     }
 
     public function getOutletByIndex($index)

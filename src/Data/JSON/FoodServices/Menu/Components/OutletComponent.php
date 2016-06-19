@@ -38,9 +38,7 @@ class OutletComponent extends BaseComponent
 
     public function getMenus()
     {
-        return array_map(function ($element) {
-            return new MenuComponent($element);
-        }, $this->getDecodedData()[JSONModelConstants::MENU]);
+        return ComponentFactory::buildComponents($this->getDecodedData()[JSONModelConstants::MENU], MenuComponent::class);
     }
 
     public function getMenuByIndex($index)

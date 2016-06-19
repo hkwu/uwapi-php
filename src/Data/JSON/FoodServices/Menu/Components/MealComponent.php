@@ -2,6 +2,7 @@
 
 namespace UWaterlooAPI\Data\JSON\FoodServices\Menu\Components;
 
+use UWaterlooAPI\Data\JSON\Common\ComponentFactory;
 use UWaterlooAPI\Data\JSON\Common\Components\BaseComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
 use UWaterlooAPI\Utils\ArrayUtil;
@@ -23,14 +24,11 @@ class MealComponent extends BaseComponent
 
     public function getProducts()
     {
-        return array_map(function ($element) {
-            return new ProductComponent($element);
-        }, $this->getDecodedData());
+        return ComponentFactory::buildComponents($this->getDecodedData(), ProductComponent::class);
     }
 
     public function getProductByIndex($index)
     {
-        // todo exceptions
         return new ProductComponent($this->getDecodedData()[$index]);
     }
 
@@ -42,7 +40,7 @@ class MealComponent extends BaseComponent
             $name
         );
 
-        return new ProductComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, ProductComponent::class);
     }
 
     public function getProductById($id)
@@ -53,6 +51,6 @@ class MealComponent extends BaseComponent
             $id
         );
 
-        return new ProductComponent(reset($filtered));
+        return ComponentFactory::buildComponent($filtered, ProductComponent::class);
     }
 }
