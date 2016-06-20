@@ -1,5 +1,8 @@
 # IntelliJ
 .idea/
 
-# composer packages
+# Composer packages
 vendor/
+
+# misc
+.env
