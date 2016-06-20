@@ -15,8 +15,8 @@ abstract class JSONModel extends APIModel
             parent::__construct($data);
             $this->decodedData = json_decode($data, true);
         } else {
-            $this->decodedData = $data;
             parent::__construct(json_encode($data));
+            $this->decodedData = $data;
         }
     }
 
