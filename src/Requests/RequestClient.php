@@ -29,13 +29,74 @@ class RequestClient
 
     private $apiKey;
     private $client;
+    private $format;
 
-    public function __construct($apiKey)
+    public function __construct($apiKey, $format = null)
     {
         $this->apiKey = $apiKey;
         $this->client = new Client([
             'base_uri' => self::BASE_API_URL,
         ]);
+        $this->format = $format;
+    }
+
+    public function setFormat($format)
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    public function getFSMenu()
+    {
+        if (func_num_args() === 2) {
+            return $this->translateRequest(self::FS_MENU_YW, func_get_args());
+        } else {
+            return $this->translateRequest(self::FS_MENU);
+        }
+    }
+
+    public function getFSNotes()
+    {
+        if (func_num_args() === 2) {
+            return $this->translateRequest(self::FS_NOTES_YW, func_get_args());
+        } else {
+            return $this->translateRequest(self::FS_NOTES);
+        }
+    }
+
+    public function getFSDiets()
+    {
+        return $this->translateRequest(self::FS_DIETS);
+    }
+
+    public function getFSOutlets()
+    {
+        return $this->translateRequest(self::FS_DIETS);
+    }
+    
+    public function getFSLocations()
+    {
+        return $this->translateRequest(self::FS_LOCATIONS);
+    }
+    
+    public function getFSWatCard()
+    {
+        return $this->translateRequest(self::FS_WATCARD);
+    }
+    
+    public function getFSAnnouncements()
+    {
+        if (func_num_args() === 2) {
+            return $this->translateRequest(self::FS_ANNOUNCEMENTS_YW, func_get_args());
+        } else {
+            return $this->translateRequest(self::FS_ANNOUNCEMENTS);
+        }
+    }
+    
+    public function getFSProducts($productId)
+    {
+        return $this->translateRequest(self::FS_PRODUCTS, [$productId]);
     }
 
     /**
@@ -65,6 +126,11 @@ class RequestClient
         ];
 
         return vsprintf($endpoint, $params).'.'.$format.'?'.http_build_query($queryStringParams);
+    }
+
+    private function translateRequest($endpoint, array $params = [])
+    {
+        return $this->makeRequest($endpoint, $params, $this->format);
     }
 
     private function decodeResponseBody($responseBody)
