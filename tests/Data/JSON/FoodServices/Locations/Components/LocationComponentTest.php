@@ -18,9 +18,7 @@ class LocationComponentTest extends LocationsModelTest
 
         $desc = "The Bombshelter Pub, or as it’s more affectionately known, The Bomber, is the ultimate hang-out on campus!\n\nCome out every Wednesday to one of the longest running bar nights in KW hosted by your very own Federation of Students!";
         $this->assertEquals($desc, $location->getDescription());
-        $notice = <<<NOTICE
-The Bombshelter Pub will be open for lunch from Dec 14th to the 18th from 11am to 3pm. Every table of 8 gets two free apps!
-NOTICE;
+        $notice = 'The Bombshelter Pub will be open for lunch from Dec 14th to the 18th from 11am to 3pm. Every table of 8 gets two free apps!';
         $this->assertEquals($notice, $location->getNotice());
 
         $this->assertFalse($location->getIs24Hrs());
