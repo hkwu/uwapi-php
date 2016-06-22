@@ -135,12 +135,22 @@ class RequestClient
         return vsprintf($endpoint, $params).'.'.$format.'?'.http_build_query($queryStringParams);
     }
 
+    /**
+     * @param array $params
+     * @param array $endpointMap
+     * @throws \BadMethodCallException
+     * @return \UWaterlooAPI\Data\APIModel
+     */
     private function translateRequest(array $params, array $endpointMap)
     {
         if (isset($endpointMap[count($params)])) {
             return $this->makeRequest($endpointMap[count($params)], $params, $this->format);
         } else {
-            return $this->makeRequest(reset($endpointMap), $params, $this->format);
+            throw new \BadMethodCallException(sprintf(
+                'Argument count for method call should be one of (%s), got %d arguments.',
+                join(', ', array_keys($endpointMap)),
+                count($params)
+            ));
         }
     }
 
