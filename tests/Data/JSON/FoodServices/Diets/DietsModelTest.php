@@ -13,10 +13,9 @@ class DietsModelTest extends DataTestCase
         $model = $this->client->setFormat(RequestClient::JSON)->getFSDiets();
         $diets = $model->getDiets();
 
-        $this->assertEquals(4, $model->getNumDiets());
-        $this->assertEquals(4, count($diets));
+        $this->assertEquals($model->getNumDiets(), count($diets));
         $this->assertInstanceOf(DietComponent::class, $model->getDietByIndex(0));
         $this->assertInstanceOf(DietComponent::class, $model->getDietByType('Vegan'));
-        $this->assertInstanceOf(DietComponent::class, $model->getDietById(7));
+        $this->assertInstanceOf(DietComponent::class, $model->getDietById(7)); // Halal
     }
 }
