@@ -47,56 +47,63 @@ class RequestClient
         return $this;
     }
 
-    public function getFSMenu()
+    public function getFSMenu(...$params)
     {
-        if (func_num_args() === 2) {
-            return $this->translateRequest(self::FS_MENU_YW, func_get_args());
-        } else {
-            return $this->translateRequest(self::FS_MENU);
-        }
+        return $this->translateRequest($params, [
+            0 => self::FS_MENU,
+            2 => self::FS_MENU_YW
+        ]);
     }
 
-    public function getFSNotes()
+    public function getFSNotes(...$params)
     {
-        if (func_num_args() === 2) {
-            return $this->translateRequest(self::FS_NOTES_YW, func_get_args());
-        } else {
-            return $this->translateRequest(self::FS_NOTES);
-        }
+        return $this->translateRequest($params, [
+            0 => self::FS_NOTES,
+            2 => self::FS_NOTES_YW
+        ]);
     }
 
     public function getFSDiets()
     {
-        return $this->translateRequest(self::FS_DIETS);
+        return $this->translateRequest([], [
+            0 => self::FS_DIETS
+        ]);
     }
 
     public function getFSOutlets()
     {
-        return $this->translateRequest(self::FS_DIETS);
+        return $this->translateRequest([], [
+            0 => self::FS_OUTLETS
+        ]);
     }
     
     public function getFSLocations()
     {
-        return $this->translateRequest(self::FS_LOCATIONS);
+        return $this->translateRequest([], [
+            0 => self::FS_LOCATIONS
+        ]);
     }
     
     public function getFSWatCard()
     {
-        return $this->translateRequest(self::FS_WATCARD);
+        return $this->translateRequest([], [
+            0 => self::FS_WATCARD
+        ]);
     }
     
-    public function getFSAnnouncements()
+    public function getFSAnnouncements(...$params)
     {
-        if (func_num_args() === 2) {
-            return $this->translateRequest(self::FS_ANNOUNCEMENTS_YW, func_get_args());
-        } else {
-            return $this->translateRequest(self::FS_ANNOUNCEMENTS);
-        }
+        return $this->translateRequest($params, [
+            0 => self::FS_ANNOUNCEMENTS,
+            2 => self::FS_ANNOUNCEMENTS_YW
+        ]);
     }
     
     public function getFSProducts($productId)
     {
-        return $this->translateRequest(self::FS_PRODUCTS, [$productId]);
+        return $this->translateRequest([$productId], [
+            1 => self::FS_PRODUCTS
+        ]);
     }
 
     /**
@@ -127,10 +134,14 @@ class RequestClient
 
         return vsprintf($endpoint, $params).'.'.$format.'?'.http_build_query($queryStringParams);
     }
-
-    private function translateRequest($endpoint, array $params = [])
+    
+    private function translateRequest(array $params, $endpointMap)
     {
-        return $this->makeRequest($endpoint, $params, $this->format);
+        if (isset($endpointMap[count($params)])) {
+            return $this->makeRequest($endpointMap[count($params)], $params, $this->format);
+        } else {
+            return $this->makeRequest($endpointMap[0], $params, $this->format);
+        }
     }
 
     private function decodeResponseBody($responseBody)
