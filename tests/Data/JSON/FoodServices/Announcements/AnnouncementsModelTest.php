@@ -12,7 +12,7 @@ class AnnouncementsModelTest extends DataTestCase
     {
         $model = $this->client->setFormat(RequestClient::JSON)->getFSAnnouncements(2013, 2);
         $announcements = $model->getAnnouncements();
-        
+
         $this->assertEquals(1, $model->getNumAnnouncements());
         $this->assertEquals(1, count($announcements));
         $this->assertInstanceOf(AnnouncementComponent::class, $announcements[0]);

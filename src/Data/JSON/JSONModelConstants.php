@@ -9,7 +9,7 @@ abstract class JSONModelConstants
     const DATA = 'data';
 
     /**
-     * Food Services
+     * Food Services.
      */
     const DATE = 'date';
     const DIET_ID = 'diet_id';

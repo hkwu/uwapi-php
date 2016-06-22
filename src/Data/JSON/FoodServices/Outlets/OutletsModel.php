@@ -38,10 +38,10 @@ class OutletsModel extends BaseModel
             JSONModelConstants::OUTLET_ID,
             $id
         );
-        
+
         return ComponentFactory::buildComponentArray($filtered, OutletComponent::class);
     }
-    
+
     public function getOutletByName($name)
     {
         $filtered = ArrayUtil::filterByProperty(

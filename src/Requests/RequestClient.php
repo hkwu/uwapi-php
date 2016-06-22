@@ -51,7 +51,7 @@ class RequestClient
     {
         return $this->translateRequest($params, [
             0 => self::FS_MENU,
-            2 => self::FS_MENU_YW
+            2 => self::FS_MENU_YW,
         ]);
     }
 
@@ -59,50 +59,50 @@ class RequestClient
     {
         return $this->translateRequest($params, [
             0 => self::FS_NOTES,
-            2 => self::FS_NOTES_YW
+            2 => self::FS_NOTES_YW,
         ]);
     }
 
     public function getFSDiets()
     {
         return $this->translateRequest([], [
-            0 => self::FS_DIETS
+            0 => self::FS_DIETS,
         ]);
     }
 
     public function getFSOutlets()
     {
         return $this->translateRequest([], [
-            0 => self::FS_OUTLETS
+            0 => self::FS_OUTLETS,
         ]);
     }
-    
+
     public function getFSLocations()
     {
         return $this->translateRequest([], [
-            0 => self::FS_LOCATIONS
+            0 => self::FS_LOCATIONS,
         ]);
     }
-    
+
     public function getFSWatCard()
     {
         return $this->translateRequest([], [
-            0 => self::FS_WATCARD
+            0 => self::FS_WATCARD,
         ]);
     }
-    
+
     public function getFSAnnouncements(...$params)
     {
         return $this->translateRequest($params, [
             0 => self::FS_ANNOUNCEMENTS,
-            2 => self::FS_ANNOUNCEMENTS_YW
+            2 => self::FS_ANNOUNCEMENTS_YW,
         ]);
     }
-    
+
     public function getFSProducts($productId)
     {
         return $this->translateRequest([$productId], [
-            1 => self::FS_PRODUCTS
+            1 => self::FS_PRODUCTS,
         ]);
     }
 
@@ -134,7 +134,7 @@ class RequestClient
 
         return vsprintf($endpoint, $params).'.'.$format.'?'.http_build_query($queryStringParams);
     }
-    
+
     private function translateRequest(array $params, $endpointMap)
     {
         if (isset($endpointMap[count($params)])) {

@@ -8,7 +8,7 @@ class ArrayUtil
     {
         foreach ($keys as $key) {
             if (!isset($array[$key])) {
-                return null;
+                return;
             }
 
             $array = $array[$key];

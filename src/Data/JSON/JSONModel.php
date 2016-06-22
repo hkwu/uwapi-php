@@ -29,6 +29,7 @@ abstract class JSONModel extends APIModel
      * Wrapper method to return data from the model's decoded JSON.
      *
      * @param array ...$keys Set of keys to access the decoded data.
+     *
      * @return mixed|null Returns value if found, else null.
      */
     public function get(...$keys)

@@ -27,7 +27,7 @@ class MenuModel extends BaseModel
     public function getDate()
     {
         return ComponentFactory::buildComponent(
-            $this->get(JSONModelConstants::DATA, JSONModelConstants::DATE), 
+            $this->get(JSONModelConstants::DATA, JSONModelConstants::DATE),
             DateComponent::class
         );
     }

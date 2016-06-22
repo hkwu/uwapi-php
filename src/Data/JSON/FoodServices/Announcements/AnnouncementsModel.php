@@ -9,7 +9,7 @@ use UWaterlooAPI\Data\JSON\FoodServices\Announcements\Components\AnnouncementCom
 class AnnouncementsModel extends BaseModel
 {
     private $numAnnouncements;
-    
+
     public function __construct($rawData)
     {
         parent::__construct($rawData);
@@ -23,12 +23,12 @@ class AnnouncementsModel extends BaseModel
     {
         return $this->numAnnouncements;
     }
-    
+
     public function getAnnouncementByIndex($index)
     {
         return ComponentFactory::buildComponent($this->getData()[$index], AnnouncementComponent::class);
     }
-    
+
     public function getAnnouncements()
     {
         return ComponentFactory::buildComponents($this->getData(), AnnouncementComponent::class);

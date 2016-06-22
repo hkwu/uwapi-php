@@ -7,8 +7,9 @@ class ComponentFactory
     /**
      * Builds the given component using the given array as the data input.
      *
-     * @param array $data
+     * @param array  $data
      * @param string $component
+     *
      * @return \UWaterlooAPI\Data\JSON\Common\Components\BaseComponent|null
      */
     public static function buildComponent(array $data, $component)
@@ -19,8 +20,9 @@ class ComponentFactory
     /**
      * Builds the given component using the first element of the given array as the data input.
      *
-     * @param array $data
+     * @param array  $data
      * @param string $component
+     *
      * @return \UWaterlooAPI\Data\JSON\Common\Components\BaseComponent|null
      */
     public static function buildComponentArray(array $data, $component)
@@ -31,8 +33,9 @@ class ComponentFactory
     /**
      * Builds an array of components using the elements of the given array as the data input.
      *
-     * @param array $data
+     * @param array  $data
      * @param string $component
+     *
      * @return \UWaterlooAPI\Data\JSON\Common\Components\BaseComponent|null
      */
     public static function buildComponents(array $data, $component)

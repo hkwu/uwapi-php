@@ -5,7 +5,6 @@ namespace UWaterlooAPI\Data\JSON\FoodServices\Menu\Components;
 use UWaterlooAPI\Data\JSON\Common\Components\ComponentFactory;
 use UWaterlooAPI\Data\JSON\Common\Components\BaseComponent;
 use UWaterlooAPI\Data\JSON\JSONModelConstants;
-use UWaterlooAPI\Utils\ArrayUtil;
 
 class MenuComponent extends BaseComponent
 {
