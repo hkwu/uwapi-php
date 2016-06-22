@@ -33,7 +33,7 @@ class LocationComponent extends BaseComponent
         $this->description = $this->get(JSONModelConstants::DESCRIPTION);
         $this->notice = $this->get(JSONModelConstants::NOTICE);
         $this->isOpenNow = $this->get(JSONModelConstants::IS_OPEN_NOW);
-        $this->is24Hrs = $this->get(JSONModelConstants::IS_24_HRS);
+        $this->is24Hrs = $this->get(JSONModelConstants::IS_24HRS);
         $this->numSpecialHours = count($this->get(JSONModelConstants::SPECIAL_HOURS));
         $this->numDatesClosed = count($this->get(JSONModelConstants::DATES_CLOSED));
     }

@@ -59,7 +59,7 @@ abstract class JSONModelConstants
     const SATURDAY = 'saturday';
     const SPECIAL_HOURS = 'special_hours';
     const DATES_CLOSED = 'dates_closed';
-    const IS_24_HRS = 'is_24_hrs';
+    const IS_24HRS = 'is_24hrs';
     const ADDITIONAL = 'additional';
     const OPENING_HOUR = 'opening_hour';
     const CLOSING_HOUR = 'closing_hour';
