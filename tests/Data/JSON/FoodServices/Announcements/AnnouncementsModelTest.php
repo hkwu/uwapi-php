@@ -8,12 +8,18 @@ use UWaterlooAPI\Requests\RequestClient;
 
 class AnnouncementsModelTest extends DataTestCase
 {
+    protected $model;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->model = $this->client->setFormat(RequestClient::JSON)->getFSAnnouncements(2013, 2);
+    }
+    
     public function testGetYearWeekAnnouncements()
     {
-        $model = $this->client->setFormat(RequestClient::JSON)->getFSAnnouncements(2013, 2);
-        $announcements = $model->getAnnouncements();
-
-        $this->assertEquals($model->getNumAnnouncements(), count($announcements));
-        $this->assertInstanceOf(AnnouncementComponent::class, $model->getAnnouncementByIndex(0));
+        $announcements = $this->model->getAnnouncements();
+        $this->assertEquals($this->model->getNumAnnouncements(), count($announcements));
+        $this->assertInstanceOf(AnnouncementComponent::class, $this->model->getAnnouncementByIndex(0));
     }
 }

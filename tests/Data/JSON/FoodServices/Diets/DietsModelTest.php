@@ -8,14 +8,20 @@ use UWaterlooAPI\Requests\RequestClient;
 
 class DietsModelTest extends DataTestCase
 {
+    protected $model;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->model = $this->client->setFormat(RequestClient::JSON)->getFSDiets();
+    }
+    
     public function testGetDiets()
     {
-        $model = $this->client->setFormat(RequestClient::JSON)->getFSDiets();
-        $diets = $model->getDiets();
-
-        $this->assertEquals($model->getNumDiets(), count($diets));
-        $this->assertInstanceOf(DietComponent::class, $model->getDietByIndex(0));
-        $this->assertInstanceOf(DietComponent::class, $model->getDietByType('Vegan'));
-        $this->assertInstanceOf(DietComponent::class, $model->getDietById(7)); // Halal
+        $diets = $this->model->getDiets();
+        $this->assertEquals($this->model->getNumDiets(), count($diets));
+        $this->assertInstanceOf(DietComponent::class, $this->model->getDietByIndex(0));
+        $this->assertInstanceOf(DietComponent::class, $this->model->getDietByType('Vegan'));
+        $this->assertInstanceOf(DietComponent::class, $this->model->getDietById(7)); // Halal
     }
 }

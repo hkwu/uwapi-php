@@ -2,15 +2,13 @@
 
 namespace Tests\Data\JSON\FoodServices\Diets\Components;
 
-use Tests\Data\DataTestCase;
-use UWaterlooAPI\Requests\RequestClient;
+use Tests\Data\JSON\FoodServices\Diets\DietsModelTest;
 
-class DietComponentTest extends DataTestCase
+class DietComponentTest extends DietsModelTest
 {
     public function testAccessors()
     {
-        $model = $this->client->setFormat(RequestClient::JSON)->getFSDiets();
-        $vegetarian = $model->getDietByType('Vegetarian');
+        $vegetarian = $this->model->getDietByType('Vegetarian');
         $this->assertEquals('Vegetarian', $vegetarian->getDietType());
         $this->assertEquals(6, $vegetarian->getDietId());
     }
