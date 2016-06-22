@@ -140,7 +140,7 @@ class RequestClient
         if (isset($endpointMap[count($params)])) {
             return $this->makeRequest($endpointMap[count($params)], $params, $this->format);
         } else {
-            return $this->makeRequest($endpointMap[0], $params, $this->format);
+            return $this->makeRequest(reset($endpointMap), $params, $this->format);
         }
     }
 
