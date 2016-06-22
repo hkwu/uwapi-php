@@ -15,6 +15,6 @@ class AnnouncementsModelTest extends DataTestCase
 
         $this->assertEquals(1, $model->getNumAnnouncements());
         $this->assertEquals(1, count($announcements));
-        $this->assertInstanceOf(AnnouncementComponent::class, $announcements[0]);
+        $this->assertInstanceOf(AnnouncementComponent::class, $model->getAnnouncementByIndex(0));
     }
 }
