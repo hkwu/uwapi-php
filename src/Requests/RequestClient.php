@@ -135,7 +135,7 @@ class RequestClient
         return vsprintf($endpoint, $params).'.'.$format.'?'.http_build_query($queryStringParams);
     }
 
-    private function translateRequest(array $params, $endpointMap)
+    private function translateRequest(array $params, array $endpointMap)
     {
         if (isset($endpointMap[count($params)])) {
             return $this->makeRequest($endpointMap[count($params)], $params, $this->format);
