@@ -63,30 +63,30 @@ class RequestClient
         ]);
     }
 
-    public function getFSDiets()
+    public function getFSDiets(...$params)
     {
-        return $this->translateRequest([], [
+        return $this->translateRequest($params, [
             0 => self::FS_DIETS,
         ]);
     }
 
-    public function getFSOutlets()
+    public function getFSOutlets(...$params)
     {
-        return $this->translateRequest([], [
+        return $this->translateRequest($params, [
             0 => self::FS_OUTLETS,
         ]);
     }
 
-    public function getFSLocations()
+    public function getFSLocations(...$params)
     {
-        return $this->translateRequest([], [
+        return $this->translateRequest($params, [
             0 => self::FS_LOCATIONS,
         ]);
     }
 
-    public function getFSWatCard()
+    public function getFSWatCard(...$params)
     {
-        return $this->translateRequest([], [
+        return $this->translateRequest($params, [
             0 => self::FS_WATCARD,
         ]);
     }
@@ -99,9 +99,9 @@ class RequestClient
         ]);
     }
 
-    public function getFSProducts($productId)
+    public function getFSProducts(...$params)
     {
-        return $this->translateRequest([$productId], [
+        return $this->translateRequest($params, [
             1 => self::FS_PRODUCTS,
         ]);
     }
