@@ -7,12 +7,12 @@ class ComponentFactory
     /**
      * Builds the given component using the given array as the data input.
      *
-     * @param array  $data
+     * @param array|null  $data
      * @param string $component
      *
      * @return \UWaterlooAPI\Data\JSON\Common\Components\BaseComponent|null
      */
-    public static function buildComponent(array $data, $component)
+    public static function buildComponent($data, $component)
     {
         return empty($data) ? null : new $component($data);
     }
