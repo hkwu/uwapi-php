@@ -22,7 +22,12 @@ class LocationComponentTest extends LocationsModelTest
         $this->assertEquals($notice, $location->getNotice());
 
         $this->assertFalse($location->getIs24Hrs());
-        $this->assertInstanceOf(OpeningHoursComponent::class, $location->getSaturdayHours());
         $this->assertEquals('2015-12-19', $location->getDatesClosed()[0]);
+    }
+
+    public function testConstruction()
+    {
+        $location = $this->model->getLocationByName('The Bombshelter Pub');
+        $this->assertInstanceOf(OpeningHoursComponent::class, $location->getSaturdayHours());
     }
 }
