@@ -22,25 +22,25 @@ class RequestClient
     const FS_LOCATIONS = 'foodservices/locations';
     const FS_WATCARD = 'foodservices/watcard';
     const FS_ANNOUNCEMENTS = 'foodservices/announcements';
-    const FS_PRODUCTS_ID = 'foodservices/products/%d';
-    const FS_YEAR_WEEK_MENU = 'foodservices/%d/%d/menu';
-    const FS_YEAR_WEEK_NOTES = 'foodservices/%d/%d/notes';
-    const FS_YEAR_WEEK_ANNOUNCEMENTS = 'foodservices/%d/%d/announcements';
+    const FS_PRODUCTS_ID = 'foodservices/products/%s';
+    const FS_YEAR_WEEK_MENU = 'foodservices/%s/%s/menu';
+    const FS_YEAR_WEEK_NOTES = 'foodservices/%s/%s/notes';
+    const FS_YEAR_WEEK_ANNOUNCEMENTS = 'foodservices/%s/%s/announcements';
 
     // Feds
     const FEDS_EVENTS = 'feds/events';
-    const FEDS_EVENTS_ID = 'feds/events/%d';
+    const FEDS_EVENTS_ID = 'feds/events/%s';
     const FEDS_LOCATIONS = 'feds/locations';
 
     // Courses
     const COURSES = 'courses';
     const COURSES_SUBJECT = 'courses/%s';
     const COURSES_ID = 'courses/%s';
-    const COURSES_CLASS_SCHEDULE = 'courses/%d/schedule';
-    const COURSES_SUBJECT_CATALOG = 'courses/%s/%d';
-    const COURSES_SUBJECT_CATALOG_SCHEDULE = 'courses/%s/%d/schedule';
-    const COURSES_SUBJECT_CATALOG_PREREQ = 'courses/%s/%d/prerequisites';
-    const COURSES_SUBJECT_CATALOG_EXAMS = 'courses/%s/%d/examschedule';
+    const COURSES_CLASS_SCHEDULE = 'courses/%s/schedule';
+    const COURSES_SUBJECT_CATALOG = 'courses/%s/%s';
+    const COURSES_SUBJECT_CATALOG_SCHEDULE = 'courses/%s/%s/schedule';
+    const COURSES_SUBJECT_CATALOG_PREREQ = 'courses/%s/%s/prerequisites';
+    const COURSES_SUBJECT_CATALOG_EXAMS = 'courses/%s/%s/examschedule';
 
     // awards/scholarships
     const AWARDS_GRAD = 'awards/graduate';
@@ -49,17 +49,17 @@ class RequestClient
     // events
     const EVENTS = 'events';
     const EVENTS_SITE = 'events/%s';
-    const EVENTS_SITE_ID = 'events/%s/%d';
+    const EVENTS_SITE_ID = 'events/%s/%s';
     const EVENTS_HOLIDAYS = 'events/holidays';
 
     // blogs
     const BLOGS_SITE = 'blogs/%s';
-    const BLOGS_SITE_ID = 'blogs/%s/%d';
+    const BLOGS_SITE_ID = 'blogs/%s/%s';
 
     // news
     const NEWS = 'news';
     const NEWS_SITE = 'news/%s';
-    const NEWS_SITE_ID = 'news/%s/%d';
+    const NEWS_SITE_ID = 'news/%s/%s';
 
     // opportunities/jobs
     const OPPORTUNITIES = 'opportunities';
@@ -74,13 +74,13 @@ class RequestClient
 
     // terms
     const TERMS_LIST = 'terms/list';
-    const TERMS_TERM_COURSES = 'terms/%d/courses';
-    const TERMS_TERM_EXAMS = 'terms/%d/examschedule';
-    const TERMS_TERM_SUBJECT_SCHEDULE = 'terms/%d/%s/schedule';
-    const TERMS_TERM_SUBJECT_CATALOG_SCHEDULE = 'terms/%d/%s/%s/schedule';
-    const TERMS_TERM_ENROLLMENT = 'terms/%d/enrollment';
-    const TERMS_TERM_SUBJECT_ENROLLMENT = 'terms/%d/%s/enrollment';
-    const TERMS_TERM_INFOSESSIONS = 'terms/%d/infosessions';
+    const TERMS_TERM_COURSES = 'terms/%s/courses';
+    const TERMS_TERM_EXAMS = 'terms/%s/examschedule';
+    const TERMS_TERM_SUBJECT_SCHEDULE = 'terms/%s/%s/schedule';
+    const TERMS_TERM_SUBJECT_CATALOG_SCHEDULE = 'terms/%s/%s/%s/schedule';
+    const TERMS_TERM_ENROLLMENT = 'terms/%s/enrollment';
+    const TERMS_TERM_SUBJECT_ENROLLMENT = 'terms/%s/%s/enrollment';
+    const TERMS_TERM_INFOSESSIONS = 'terms/%s/infosessions';
 
     // resources
     const RES_TUTORS = 'resources/tutors';
@@ -128,7 +128,7 @@ class RequestClient
     const TRANSIT_GRT_STOPS = 'transit/grt/stops';
 
     // people directory search
-    const DIRECTORY_ID = 'directory/%d';
+    const DIRECTORY_ID = 'directory/%s';
 
     // API
     const API_USAGE = 'api/usage';
@@ -261,7 +261,7 @@ class RequestClient
             return $this->makeRequest($endpointMap[count($params)], $params, $this->format);
         } else {
             throw new \BadMethodCallException(sprintf(
-                'Argument count for method call should be one of (%s), got %d arguments.',
+                'Argument count for method call should be one of (%s), got %s arguments.',
                 join(', ', array_keys($endpointMap)),
                 count($params)
             ));
