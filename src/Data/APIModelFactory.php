@@ -21,10 +21,10 @@ class APIModelFactory
         switch ($format) {
             case RequestClient::JSON:
                 switch ($endpoint) {
-                    case RequestClient::FS_MENU_YW:
+                    case RequestClient::FS_YEAR_WEEK_MENU:
                     case RequestClient::FS_MENU:
                         return new MenuModel($data);
-                    case RequestClient::FS_NOTES_YW:
+                    case RequestClient::FS_YEAR_WEEK_NOTES:
                     case RequestClient::FS_NOTES:
                         return new NotesModel($data);
                     case RequestClient::FS_DIETS:
@@ -35,10 +35,10 @@ class APIModelFactory
                         return new LocationsModel($data);
                     case RequestClient::FS_WATCARD:
                         return new WatCardModel($data);
-                    case RequestClient::FS_ANNOUNCEMENTS_YW:
+                    case RequestClient::FS_YEAR_WEEK_ANNOUNCEMENTS:
                     case RequestClient::FS_ANNOUNCEMENTS:
                         return new AnnouncementsModel($data);
-                    case RequestClient::FS_PRODUCTS:
+                    case RequestClient::FS_PRODUCTS_ID:
                         return new ProductsModel($data);
                     default:
                         return new BaseModel($data);
