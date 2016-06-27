@@ -22,25 +22,25 @@ class RequestClient
     const FS_LOCATIONS = 'foodservices/locations';
     const FS_WATCARD = 'foodservices/watcard';
     const FS_ANNOUNCEMENTS = 'foodservices/announcements';
-    const FS_PRODUCTS_ID = 'foodservices/products/%s';
-    const FS_YEAR_WEEK_MENU = 'foodservices/%s/%s/menu';
-    const FS_YEAR_WEEK_NOTES = 'foodservices/%s/%s/notes';
-    const FS_YEAR_WEEK_ANNOUNCEMENTS = 'foodservices/%s/%s/announcements';
+    const FS_PRODUCTS_ID = 'foodservices/products/{product_id}';
+    const FS_YEAR_WEEK_MENU = 'foodservices/{year}/{week}/menu';
+    const FS_YEAR_WEEK_NOTES = 'foodservices/{year}/{week}/notes';
+    const FS_YEAR_WEEK_ANNOUNCEMENTS = 'foodservices/{year}/{week}/announcements';
 
     // Feds
     const FEDS_EVENTS = 'feds/events';
-    const FEDS_EVENTS_ID = 'feds/events/%s';
+    const FEDS_EVENTS_ID = 'feds/events/{id}';
     const FEDS_LOCATIONS = 'feds/locations';
 
     // Courses
     const COURSES = 'courses';
-    const COURSES_SUBJECT = 'courses/%s';
-    const COURSES_ID = 'courses/%s';
-    const COURSES_CLASS_SCHEDULE = 'courses/%s/schedule';
-    const COURSES_SUBJECT_CATALOG = 'courses/%s/%s';
-    const COURSES_SUBJECT_CATALOG_SCHEDULE = 'courses/%s/%s/schedule';
-    const COURSES_SUBJECT_CATALOG_PREREQ = 'courses/%s/%s/prerequisites';
-    const COURSES_SUBJECT_CATALOG_EXAMS = 'courses/%s/%s/examschedule';
+    const COURSES_SUBJECT = 'courses/{subject}';
+    const COURSES_ID = 'courses/{course_id}';
+    const COURSES_CLASS_SCHEDULE = 'courses/{class_number}/schedule';
+    const COURSES_SUBJECT_CATALOG = 'courses/{subject}/{catalog_number}';
+    const COURSES_SUBJECT_CATALOG_SCHEDULE = 'courses/{subject}/{catalog_number}/schedule';
+    const COURSES_SUBJECT_CATALOG_PREREQ = 'courses/{subject}/{catalog_number}/prerequisites';
+    const COURSES_SUBJECT_CATALOG_EXAMS = 'courses/{subject}/{catalog_number}/examschedule';
 
     // awards/scholarships
     const AWARDS_GRAD = 'awards/graduate';
@@ -48,39 +48,39 @@ class RequestClient
 
     // events
     const EVENTS = 'events';
-    const EVENTS_SITE = 'events/%s';
-    const EVENTS_SITE_ID = 'events/%s/%s';
+    const EVENTS_SITE = 'events/{site}';
+    const EVENTS_SITE_ID = 'events/{site}/{id}';
     const EVENTS_HOLIDAYS = 'events/holidays';
 
     // blogs
-    const BLOGS_SITE = 'blogs/%s';
-    const BLOGS_SITE_ID = 'blogs/%s/%s';
+    const BLOGS_SITE = 'blogs/{site}';
+    const BLOGS_SITE_ID = 'blogs/{site}/{id}';
 
     // news
     const NEWS = 'news';
-    const NEWS_SITE = 'news/%s';
-    const NEWS_SITE_ID = 'news/%s/%s';
+    const NEWS_SITE = 'news/{site}';
+    const NEWS_SITE_ID = 'news/{site}/{id}';
 
     // opportunities/jobs
     const OPPORTUNITIES = 'opportunities';
-    const OPPORTUNITIES_SITE = 'opportunities/%s';
-    const OPPORTUNITIES_SITE_ID = 'opportunities/%s/%s';
+    const OPPORTUNITIES_SITE = 'opportunities/{site}';
+    const OPPORTUNITIES_SITE_ID = 'opportunities/{site}/{id}';
 
     // services
-    const SERVICES_SITE = 'services/%s';
+    const SERVICES_SITE = 'services/{site}';
 
     // weather
     const WEATHER_CURRENT = 'weather/current';
 
     // terms
     const TERMS_LIST = 'terms/list';
-    const TERMS_TERM_COURSES = 'terms/%s/courses';
-    const TERMS_TERM_EXAMS = 'terms/%s/examschedule';
-    const TERMS_TERM_SUBJECT_SCHEDULE = 'terms/%s/%s/schedule';
-    const TERMS_TERM_SUBJECT_CATALOG_SCHEDULE = 'terms/%s/%s/%s/schedule';
-    const TERMS_TERM_ENROLLMENT = 'terms/%s/enrollment';
-    const TERMS_TERM_SUBJECT_ENROLLMENT = 'terms/%s/%s/enrollment';
-    const TERMS_TERM_INFOSESSIONS = 'terms/%s/infosessions';
+    const TERMS_TERM_COURSES = 'terms/{term}/courses';
+    const TERMS_TERM_EXAMS = 'terms/{term}/examschedule';
+    const TERMS_TERM_SUBJECT_SCHEDULE = 'terms/{term}/{subject}/schedule';
+    const TERMS_TERM_SUBJECT_CATALOG_SCHEDULE = 'terms/{term}/{subject}/{catalog_number}/schedule';
+    const TERMS_TERM_ENROLLMENT = 'terms/{term}/enrollment';
+    const TERMS_TERM_SUBJECT_ENROLLMENT = 'terms/{term}/{subject}/enrollment';
+    const TERMS_TERM_INFOSESSIONS = 'terms/{term}/infosessions';
 
     // resources
     const RES_TUTORS = 'resources/tutors';
@@ -98,10 +98,10 @@ class RequestClient
 
     // building
     const BUILDINGS_LIST = 'buildings/list';
-    const BUILDINGS_CODE = 'buildings/%s';
-    const BUILDINGS_BUILDING_ROOM_COURSES = 'buildings/%s/%s';
-    const BUILDINGS_CODE_ACCESSPOINTS = 'buildings/%s/accesspoints';
-    const BUILDINGS_CODE_VENDINGMACHINES = 'buildings/%s/vendingmachines';
+    const BUILDINGS_CODE = 'buildings/{building_code}';
+    const BUILDINGS_BUILDING_ROOM_COURSES = 'buildings/{building}/{room}/courses';
+    const BUILDINGS_CODE_ACCESSPOINTS = 'buildings/{building_code}/accesspoints';
+    const BUILDINGS_CODE_VENDINGMACHINES = 'buildings/{building_code}/vendingmachines';
 
     // points of interest
     const POI_ATMS = 'poi/atms';
@@ -128,7 +128,7 @@ class RequestClient
     const TRANSIT_GRT_STOPS = 'transit/grt/stops';
 
     // people directory search
-    const DIRECTORY_ID = 'directory/%s';
+    const DIRECTORY_ID = 'directory/{user_id}';
 
     // API
     const API_USAGE = 'api/usage';
