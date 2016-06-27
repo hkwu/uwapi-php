@@ -8,7 +8,7 @@ use UWaterlooAPI\Requests\RequestClient;
 class DataTestCase extends APITestCase
 {
     const FLOAT_DELTA = 0.0001;
-    
+
     protected $client;
 
     public function setUp()

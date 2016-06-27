@@ -12,7 +12,7 @@ class LocationsModelTest extends JSONTestCase
         parent::setUp();
         $this->model = $this->client->getFSLocations();
     }
-    
+
     public function testGetLocations()
     {
         $this->assertEquals($this->model->getNumLocations(), count($this->model->getLocations()));

@@ -12,7 +12,7 @@ class AnnouncementsModelTest extends JSONTestCase
         parent::setUp();
         $this->model = $this->client->getFSAnnouncements(2013, 2);
     }
-    
+
     public function testGetYearWeekAnnouncements()
     {
         $this->assertEquals($this->model->getNumAnnouncements(), count($this->model->getAnnouncements()));

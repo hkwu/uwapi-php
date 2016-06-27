@@ -7,8 +7,8 @@ class ComponentFactory
     /**
      * Builds the given component using the given array as the data input.
      *
-     * @param array|null  $data
-     * @param string $component
+     * @param array|null $data
+     * @param string     $component
      *
      * @return \UWaterlooAPI\Data\JSON\Common\Components\BaseComponent|null
      */

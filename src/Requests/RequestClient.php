@@ -252,7 +252,9 @@ class RequestClient
     /**
      * @param array $params
      * @param array $endpointMap
+     *
      * @throws \BadMethodCallException
+     *
      * @return \UWaterlooAPI\Data\APIModel
      */
     private function translateRequest(array $params, array $endpointMap)
@@ -262,7 +264,7 @@ class RequestClient
         } else {
             throw new \BadMethodCallException(sprintf(
                 'Argument count for method call should be one of (%s), got %s arguments.',
-                join(', ', array_keys($endpointMap)),
+                implode(', ', array_keys($endpointMap)),
                 count($params)
             ));
         }

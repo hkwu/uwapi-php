@@ -3,7 +3,6 @@
 namespace Tests\Data\JSON\FoodServices\Announcements\Components;
 
 use Tests\Data\JSON\FoodServices\Announcements\AnnouncementsModelTest;
-use UWaterlooAPI\Requests\RequestClient;
 
 class AnnouncementComponentTest extends AnnouncementsModelTest
 {

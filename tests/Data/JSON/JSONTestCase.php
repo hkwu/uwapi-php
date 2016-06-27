@@ -8,7 +8,7 @@ use UWaterlooAPI\Requests\RequestClient;
 class JSONTestCase extends DataTestCase
 {
     protected $model;
-    
+
     public function setUp()
     {
         parent::setUp();
