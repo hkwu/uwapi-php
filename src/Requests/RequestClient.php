@@ -290,7 +290,7 @@ class RequestClient
      * @param array $options
      * @param array $endpointMap
      *
-     * @return \UWaterlooAPI\Data\APIModel|AsyncWrapper
+     * @return \UWaterlooAPI\Data\APIModel|\UWaterlooAPI\Requests\AsyncWrapper
      *
      * @throws \Exception
      */
