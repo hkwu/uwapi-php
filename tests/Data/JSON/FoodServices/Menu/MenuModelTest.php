@@ -11,7 +11,10 @@ class MenuModelTest extends JSONTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->model = $this->client->getFSMenu(2016, 10);
+        $this->model = $this->client->getFSMenu([
+            'year' => 2016,
+            'week' => 10
+        ]);
     }
 
     public function testGetYearWeekMenu()

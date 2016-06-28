@@ -10,7 +10,10 @@ class AnnouncementsModelTest extends JSONTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->model = $this->client->getFSAnnouncements(2013, 2);
+        $this->model = $this->client->getFSAnnouncements([
+            'year' => 2013,
+            'week' => 2
+        ]);
     }
 
     public function testGetYearWeekAnnouncements()
