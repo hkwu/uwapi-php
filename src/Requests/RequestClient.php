@@ -3,6 +3,7 @@
 namespace UWaterlooAPI\Requests;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Promise;
 use StringTemplate\Engine;
 use UWaterlooAPI\Data\APIModelFactory;
 
@@ -274,6 +275,43 @@ class RequestClient
             $wrapper->getEndpoint(),
             $this->decodeResponseBody($wrapper->getPromise()->wait()->getBody())
         );
+    }
+
+    /**
+     * Takes an array of endpoints to hit and their respective parameters, then sends all the requests concurrently.
+     *
+     * @param array $endpoints The API endpoints to hit.
+     * @param array $params    The parameters to be substituted into each endpoint stub.
+     *                         Should have the same keys as $endpoints.
+     * @param array $options   Options to be applied to the entire batch of requests.
+     *
+     * @return array Array of models built using returned data for each endpoint given as input.
+     *               Array keys are preserved as given in $endpoints.
+     */
+    public function batchRequests(array $endpoints, array $params = [], array $options = [])
+    {
+        $promises = [];
+        $options['format'] = isset($options['format']) ? $options['format'] : $this->format;
+
+        foreach ($endpoints as $key => $endpoint) {
+            $endpointParams = isset($params[$key]) ? $params[$key] : [];
+            $promises[$key] = $this->client->getAsync(
+                $this->buildRequestURL($endpoint, $endpointParams, $options['format'])
+            );
+        }
+
+        $results = Promise\unwrap($promises);
+        $models = [];
+
+        foreach ($results as $key => $response) {
+            $models[$key] = APIModelFactory::makeModel(
+                $options['format'],
+                $endpoints[$key],
+                $this->decodeResponseBody($response->getBody())
+            );
+        }
+
+        return $models;
     }
 
     private function buildRequestURL($endpoint, array $params, $format)
