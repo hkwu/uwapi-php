@@ -13,7 +13,7 @@ class MenuModelTest extends JSONTestCase
         parent::setUp();
         $this->model = $this->client->getFSMenu([
             'year' => 2016,
-            'week' => 10
+            'week' => 10,
         ]);
     }
 

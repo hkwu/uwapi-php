@@ -12,8 +12,8 @@ class AsyncWrapper
      * AsyncWrapper constructor.
      *
      * @param \GuzzleHttp\Promise\PromiseInterface $promise
-     * @param string $endpoint
-     * @param string $format
+     * @param string                               $endpoint
+     * @param string                               $format
      */
     public function __construct($promise, $endpoint, $format)
     {

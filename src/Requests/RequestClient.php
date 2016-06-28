@@ -3,8 +3,6 @@
 namespace UWaterlooAPI\Requests;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use Psr\Http\Message\ResponseInterface;
 use StringTemplate\Engine;
 use UWaterlooAPI\Data\APIModelFactory;
 
@@ -153,7 +151,7 @@ class RequestClient
     {
         $this->apiKey = $apiKey;
         $this->format = $format;
-        $this->templateEngine = new Engine;
+        $this->templateEngine = new Engine();
         $this->client = new Client([
             'base_uri' => self::BASE_API_URL,
         ]);
@@ -269,7 +267,8 @@ class RequestClient
      *
      * @return \UWaterlooAPI\Data\APIModel
      */
-    public function getAsyncResponse(AsyncWrapper $wrapper) {
+    public function getAsyncResponse(AsyncWrapper $wrapper)
+    {
         return APIModelFactory::makeModel(
             $wrapper->getFormat(),
             $wrapper->getEndpoint(),
@@ -292,6 +291,7 @@ class RequestClient
      * @param array $endpointMap
      *
      * @return \UWaterlooAPI\Data\APIModel|AsyncWrapper
+     *
      * @throws \Exception
      */
     private function translateRequest(array $params, array $options, array $endpointMap)

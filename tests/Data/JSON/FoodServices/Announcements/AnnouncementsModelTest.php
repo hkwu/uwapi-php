@@ -12,7 +12,7 @@ class AnnouncementsModelTest extends JSONTestCase
         parent::setUp();
         $this->model = $this->client->getFSAnnouncements([
             'year' => 2013,
-            'week' => 2
+            'week' => 2,
         ]);
     }
 
