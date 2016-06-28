@@ -291,7 +291,7 @@ class RequestClient
     public function batchRequests(array $endpoints, array $params = [], array $options = [])
     {
         $promises = [];
-        $options['format'] = isset($options['format']) ? $options['format'] : $this->format;
+        $options['format'] = $this->getDefaultOption($options, 'format');
 
         foreach ($endpoints as $key => $endpoint) {
             $endpointParams = isset($params[$key]) ? $params[$key] : [];
@@ -335,7 +335,7 @@ class RequestClient
     private function translateRequest(array $params, array $options, array $endpointMap)
     {
         if (isset($endpointMap[count($params)])) {
-            $options['format'] = isset($options['format']) ? $options['format'] : $this->format;
+            $options['format'] = $this->getDefaultOption($options, 'format');
 
             return $this->makeRequest($endpointMap[count($params)], $params, $options);
         } else {
@@ -344,6 +344,20 @@ class RequestClient
                 implode(', ', array_keys($endpointMap)),
                 count($params)
             ));
+        }
+    }
+
+    private function getDefaultOption(array $options, $option)
+    {
+        if (isset($options[$option])) {
+            return $options[$option];
+        }
+
+        switch ($option) {
+            case 'format':
+                return $this->format;
+            default:
+                return;
         }
     }
 
