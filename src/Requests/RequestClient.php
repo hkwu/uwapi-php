@@ -3,6 +3,8 @@
 namespace UWaterlooAPI\Requests;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
 use StringTemplate\Engine;
 use UWaterlooAPI\Data\APIModelFactory;
 
@@ -157,6 +159,11 @@ class RequestClient
         ]);
     }
 
+    /**
+     * @param string $format
+     *
+     * @return $this
+     */
     public function setFormat($format)
     {
         $this->format = $format;
@@ -233,7 +240,7 @@ class RequestClient
      *
      * @throws \Exception Exception thrown when options array is configured incorrectly.
      *
-     * @return \UWaterlooAPI\Data\APIModel Returns API model object.
+     * @return \UWaterlooAPI\Data\APIModel|AsyncWrapper Returns API model object, or an AsyncWrapper object if request was asynchronous.
      */
     public function makeRequest($endpoint, array $params, array $options)
     {
@@ -241,10 +248,33 @@ class RequestClient
             throw new \Exception('Missing format in options array for request.');
         }
 
-        $response = $this->client->get($this->buildRequestURL($endpoint, $params, $options['format']));
-        $responseBody = $this->decodeResponseBody($response->getBody());
+        if (isset($options['async']) && $options['async']) {
+            return new AsyncWrapper(
+                $this->client->getAsync($this->buildRequestURL($endpoint, $params, $options['format'])),
+                $endpoint,
+                $options['format']
+            );
+        } else {
+            $response = $this->client->get($this->buildRequestURL($endpoint, $params, $options['format']));
+            $responseBody = $this->decodeResponseBody($response->getBody());
 
-        return APIModelFactory::makeModel($options['format'], $endpoint, $responseBody);
+            return APIModelFactory::makeModel($options['format'], $endpoint, $responseBody);
+        }
+    }
+
+    /**
+     * Gets a response from the promise stored inside the wrapper and builds a model from it.
+     *
+     * @param \UWaterlooAPI\Requests\AsyncWrapper $wrapper
+     *
+     * @return \UWaterlooAPI\Data\APIModel
+     */
+    public function getAsyncResponse(AsyncWrapper $wrapper) {
+        return APIModelFactory::makeModel(
+            $wrapper->getFormat(),
+            $wrapper->getEndpoint(),
+            $this->decodeResponseBody($wrapper->getPromise()->wait()->getBody())
+        );
     }
 
     private function buildRequestURL($endpoint, array $params, $format)
@@ -261,7 +291,7 @@ class RequestClient
      * @param array $options
      * @param array $endpointMap
      *
-     * @return \UWaterlooAPI\Data\APIModel
+     * @return \UWaterlooAPI\Data\APIModel|AsyncWrapper
      * @throws \Exception
      */
     private function translateRequest(array $params, array $options, array $endpointMap)
