@@ -3,7 +3,6 @@
 namespace Tests\Requests;
 
 use Tests\APITestCase;
-use UWaterlooAPI\Data\JSON\Common\BaseModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Locations\LocationsModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Menu\MenuModel;
 use UWaterlooAPI\Data\JSON\FoodServices\Outlets\OutletsModel;
@@ -31,14 +30,14 @@ class RequestClientTest extends APITestCase
     {
         // synchronous request
         $model = $this->client->makeRequest(RequestClient::FS_OUTLETS, [], [
-            'format' => RequestClient::JSON
+            'format' => RequestClient::JSON,
         ]);
         $this->assertInstanceOf(OutletsModel::class, $model);
 
         // asynchronous request
         $wrapper = $this->client->makeRequest(RequestClient::FS_OUTLETS, [], [
             'format' => RequestClient::JSON,
-            'async' => true
+            'async' => true,
         ]);
         $model = $this->client->getAsyncResponse($wrapper);
         $this->assertInstanceOf(AsyncWrapper::class, $wrapper);
@@ -50,11 +49,11 @@ class RequestClientTest extends APITestCase
         $time = -microtime(true);
         $menuWrapper = $this->client->getFSMenu([], [
             'format' => RequestClient::JSON,
-            'async' => true
+            'async' => true,
         ]);
         $locationsWrapper = $this->client->getFSLocations([], [
             'format' => RequestClient::JSON,
-            'async' => true
+            'async' => true,
         ]);
         $this->assertInstanceOf(AsyncWrapper::class, $menuWrapper);
         $this->assertInstanceOf(AsyncWrapper::class, $locationsWrapper);
@@ -72,13 +71,13 @@ class RequestClientTest extends APITestCase
         // get time for consecutive requests
         $nonBatchedTime = -microtime(true);
         $menuModel = $this->client->getFSMenu([], [
-            'format' => RequestClient::JSON
+            'format' => RequestClient::JSON,
         ]);
         $this->client->getFSMenu([], [
-            'format' => RequestClient::JSON
+            'format' => RequestClient::JSON,
         ]);
         $this->client->getFSMenu([], [
-            'format' => RequestClient::JSON
+            'format' => RequestClient::JSON,
         ]);
         $nonBatchedTime += microtime(true);
 
@@ -86,10 +85,10 @@ class RequestClientTest extends APITestCase
         $endpoints = [
             RequestClient::FS_MENU,
             RequestClient::FS_MENU,
-            RequestClient::FS_MENU
+            RequestClient::FS_MENU,
         ];
         $params = [
-            'format' => RequestClient::JSON
+            'format' => RequestClient::JSON,
         ];
 
         $batchedTime = -microtime(true);
