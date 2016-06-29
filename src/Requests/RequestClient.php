@@ -41,8 +41,8 @@ class RequestClient
     const COURSES_CLASS_SCHEDULE = 'courses/{class_number}/schedule';
     const COURSES_SUBJECT_CATALOG = 'courses/{subject}/{catalog_number}';
     const COURSES_SUBJECT_CATALOG_SCHEDULE = 'courses/{subject}/{catalog_number}/schedule';
-    const COURSES_SUBJECT_CATALOG_PREREQ = 'courses/{subject}/{catalog_number}/prerequisites';
-    const COURSES_SUBJECT_CATALOG_EXAMS = 'courses/{subject}/{catalog_number}/examschedule';
+    const COURSES_SUBJECT_CATALOG_PREREQUISITES = 'courses/{subject}/{catalog_number}/prerequisites';
+    const COURSES_SUBJECT_CATALOG_EXAMSCHEDULE = 'courses/{subject}/{catalog_number}/examschedule';
 
     // awards/scholarships
     const AWARDS_GRAD = 'awards/graduate';
