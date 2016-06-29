@@ -314,6 +314,16 @@ class RequestClient
         return $models;
     }
 
+    private function decodeResponseBody($responseBody)
+    {
+        return (string) $responseBody;
+    }
+
+    private function getDefaultOption(array $options, $option)
+    {
+        return isset($options[$option]) ? $options[$option] : $this->$option;
+    }
+
     private function buildRequestURL($endpoint, array $params, $format)
     {
         $queryStringParams = [
@@ -345,15 +355,5 @@ class RequestClient
                 count($params)
             ));
         }
-    }
-
-    private function getDefaultOption(array $options, $option)
-    {
-        return isset($options[$option]) ? $options[$option] : $this->$option;
-    }
-
-    private function decodeResponseBody($responseBody)
-    {
-        return (string) $responseBody;
     }
 }
