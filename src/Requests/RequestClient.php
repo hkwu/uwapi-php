@@ -170,7 +170,7 @@ class RequestClient
         return $this;
     }
 
-    public function getFSMenu($params = [], $options = [])
+    public function getFSMenu(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_MENU,
@@ -178,7 +178,7 @@ class RequestClient
         ]);
     }
 
-    public function getFSNotes($params = [], $options = [])
+    public function getFSNotes(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_NOTES,
@@ -186,35 +186,35 @@ class RequestClient
         ]);
     }
 
-    public function getFSDiets($params = [], $options = [])
+    public function getFSDiets(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_DIETS,
         ]);
     }
 
-    public function getFSOutlets($params = [], $options = [])
+    public function getFSOutlets(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_OUTLETS,
         ]);
     }
 
-    public function getFSLocations($params = [], $options = [])
+    public function getFSLocations(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_LOCATIONS,
         ]);
     }
 
-    public function getFSWatCard($params = [], $options = [])
+    public function getFSWatCard(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_WATCARD,
         ]);
     }
 
-    public function getFSAnnouncements($params = [], $options = [])
+    public function getFSAnnouncements(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             0 => self::FS_ANNOUNCEMENTS,
@@ -222,7 +222,7 @@ class RequestClient
         ]);
     }
 
-    public function getFSProducts($params = [], $options = [])
+    public function getFSProducts(array $params = [], array $options = [])
     {
         return $this->translateRequest($params, $options, [
             1 => self::FS_PRODUCTS_ID,
