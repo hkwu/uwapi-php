@@ -243,21 +243,27 @@ class RequestClient
      */
     public function makeRequest($endpoint, array $params = [], array $options = [])
     {
-        if (!isset($options['format'])) {
-            throw new \Exception('Missing format in options array for request.');
+        $format = $this->getDefaultOption($options, 'format');
+        $validFormats = [
+            self::JSON,
+            self::XML,
+        ];
+
+        if (!in_array($format, $validFormats, true)) {
+            throw new \Exception(sprintf('Invalid format specified for request: %s.', $format));
         }
 
         if (isset($options['async']) && $options['async']) {
             return new AsyncWrapper(
-                $this->client->getAsync($this->buildRequestURL($endpoint, $params, $options['format'])),
+                $this->client->getAsync($this->buildRequestURL($endpoint, $params, $format)),
                 $endpoint,
-                $options['format']
+                $format
             );
         } else {
-            $response = $this->client->get($this->buildRequestURL($endpoint, $params, $options['format']));
+            $response = $this->client->get($this->buildRequestURL($endpoint, $params, $format));
             $responseBody = $this->decodeResponseBody($response->getBody());
 
-            return APIModelFactory::makeModel($options['format'], $endpoint, $responseBody);
+            return APIModelFactory::makeModel($format, $endpoint, $responseBody);
         }
     }
 
@@ -345,8 +351,6 @@ class RequestClient
     private function translateRequest(array $params, array $options, array $endpointMap)
     {
         if (isset($endpointMap[count($params)])) {
-            $options['format'] = $this->getDefaultOption($options, 'format');
-
             return $this->makeRequest($endpointMap[count($params)], $params, $options);
         } else {
             throw new \Exception(sprintf(

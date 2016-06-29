@@ -19,10 +19,19 @@ class RequestClientTest extends APITestCase
         $this->client = new RequestClient(getenv('API_KEY'));
     }
 
+    public function testMakeRequestsBadFormatException()
+    {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('Invalid format specified for request: weird.');
+        $this->client->makeRequest(RequestClient::API_CHANGELOG, [], [
+            'format' => 'weird',
+        ]);
+    }
+
     public function testMakeRequestsMissingFormatException()
     {
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Missing format in options array for request.');
+        $this->expectExceptionMessage('Invalid format specified for request: .');
         $this->client->makeRequest(RequestClient::API_CHANGELOG);
     }
 
