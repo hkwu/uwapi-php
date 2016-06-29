@@ -241,7 +241,7 @@ class RequestClient
      *
      * @return \UWaterlooAPI\Data\APIModel|AsyncWrapper Returns API model object, or an AsyncWrapper object if request was asynchronous.
      */
-    public function makeRequest($endpoint, array $params, array $options)
+    public function makeRequest($endpoint, array $params = [], array $options = [])
     {
         if (!isset($options['format'])) {
             throw new \Exception('Missing format in options array for request.');
@@ -349,16 +349,7 @@ class RequestClient
 
     private function getDefaultOption(array $options, $option)
     {
-        if (isset($options[$option])) {
-            return $options[$option];
-        }
-
-        switch ($option) {
-            case 'format':
-                return $this->format;
-            default:
-                return;
-        }
+        return isset($options[$option]) ? $options[$option] : $this->$option;
     }
 
     private function decodeResponseBody($responseBody)
