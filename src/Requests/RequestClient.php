@@ -156,6 +156,43 @@ class RequestClient
         $this->client = new Client([
             'base_uri' => self::BASE_API_URL,
         ]);
+
+        $endpointResolutionMap = [
+            self::FS_MENU => $this->hashParams([]),
+            self::FS_YEAR_WEEK_MENU => $this->hashParams([
+                'year',
+                'week'
+            ]),
+            self::FS_NOTES => $this->hashParams([]),
+            self::FS_YEAR_WEEK_NOTES => $this->hashParams([
+                'year',
+                'week'
+            ]),
+            self::FS_DIETS => $this->hashParams([]),
+            self::FS_OUTLETS => $this->hashParams([]),
+            self::FS_LOCATIONS => $this->hashParams([]),
+            self::FS_WATCARD => $this->hashParams([]),
+            self::FS_ANNOUNCEMENTS => $this->hashParams([]),
+            self::FS_YEAR_WEEK_ANNOUNCEMENTS => $this->hashParams([
+                'year',
+                'week'
+            ]),
+            self::FEDS_EVENTS => $this->hashParams([]),
+            self::FEDS_EVENTS_ID => $this->hashParams([
+                'id'
+            ]),
+            self::FS_LOCATIONS => $this->hashParams([]),
+            self::COURSES => $this->hashParams([]),
+            self::COURSES_SUBJECT => $this->hashParams([
+                'subject'
+            ]),
+            self::COURSES_ID => $this->hashParams([
+                'course_id'
+            ]),
+            self::COURSES_CLASS_SCHEDULE => $this->hashParams([
+                'class_number'
+            ])
+        ];
     }
 
     /**
@@ -229,13 +266,37 @@ class RequestClient
         ]);
     }
 
+    public function getFedsEvents(array $params = [], array $options = [])
+    {
+        return $this->translateRequest($params, $options, [
+            0 => self::FEDS_EVENTS,
+            1 => self::FEDS_EVENTS_ID,
+        ]);
+    }
+
+    public function getFedsLocations(array $params = [], array $options = [])
+    {
+        return $this->translateRequest($params, $options, [
+            0 => self::FEDS_LOCATIONS,
+        ]);
+    }
+
+    public function getCourses(array $params = [], array $options = [])
+    {
+        return $this->translateRequest($params, $options, [
+            $this->endpointResolutionMap[self::COURSES] => self::COURSES,
+            1 => self::COURSES_SUBJECT,
+            1 => self::COURSES_ID,
+        ]);
+    }
+
     /**
      * Sends a request to the API. Can take parameters to specify specific endpoints.
      *
      * @param string $endpoint The API endpoint.
-     * @param array  $params   Array containing parameters to be substituted into
+     * @param array $params Array containing parameters to be substituted into
      *                         the request URL, in the order given.
-     * @param array  $options  Array of options for this request.
+     * @param array $options Array of options for this request.
      *
      * @throws \Exception Exception thrown when options array is configured incorrectly.
      *
@@ -287,9 +348,9 @@ class RequestClient
      * Takes an array of endpoints to hit and their respective parameters, then sends all the requests concurrently.
      *
      * @param array $endpoints The API endpoints to hit.
-     * @param array $params    The parameters to be substituted into each endpoint stub.
+     * @param array $params The parameters to be substituted into each endpoint stub.
      *                         Should have the same keys as $endpoints.
-     * @param array $options   Options to be applied to the entire batch of requests.
+     * @param array $options Options to be applied to the entire batch of requests.
      *
      * @return array Array of models built using returned data for each endpoint given as input.
      *               Array keys are preserved as given in $endpoints.
@@ -322,7 +383,14 @@ class RequestClient
 
     private function decodeResponseBody($responseBody)
     {
-        return (string) $responseBody;
+        return (string)$responseBody;
+    }
+
+    private function hashParams(array $params)
+    {
+        sort($params);
+
+        return md5(json_encode($params));
     }
 
     private function getDefaultOption(array $options, $option)
