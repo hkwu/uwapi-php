@@ -17,7 +17,7 @@ class RequestClient
     const JSON = 'json';
     const XML = 'xml';
 
-    // food services
+    // Food Services
     const FS_MENU = 'foodservices/menu';
     const FS_NOTES = 'foodservices/notes';
     const FS_DIETS = 'foodservices/diets';
@@ -92,7 +92,7 @@ class RequestClient
     const RESOURCES_GOOSEWATCH = 'resources/goosewatch';
     const RESOURCES_SUNSHINELIST = 'resources/sunshinelist';
 
-    // defintions and codes
+    // definitions and codes
     const CODES_UNITS = 'codes/units';
     const CODES_TERMS = 'codes/terms';
     const CODES_GROUPS = 'codes/groups';
