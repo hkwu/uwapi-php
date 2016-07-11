@@ -35,7 +35,7 @@ class RequestClient
     const FEDS_EVENTS_ID = 'feds/events/{id}';
     const FEDS_LOCATIONS = 'feds/locations';
 
-    // Courses
+    // courses
     const COURSES = 'courses';
     const COURSES_SUBJECT = 'courses/{subject}';
     const COURSES_ID = 'courses/{course_id}';
