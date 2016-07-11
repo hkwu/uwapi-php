@@ -431,18 +431,6 @@ class RequestClient
     }
 
     /**
-     * @param string $format
-     *
-     * @return $this
-     */
-    public function setFormat($format)
-    {
-        $this->format = $format;
-
-        return $this;
-    }
-
-    /**
      * @param string $name
      * @param array  $arguments
      *
@@ -484,6 +472,18 @@ class RequestClient
         }
     }
 
+    /**
+     * @param string $format
+     *
+     * @return $this
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+    
     /**
      * Sends a request to the API. Can take parameters to specify specific endpoints.
      *
