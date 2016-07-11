@@ -8,8 +8,6 @@ use Psr\Http\Message\StreamInterface;
 use StringTemplate\Engine;
 use UWaterlooAPI\Data\APIModelFactory;
 
-require __DIR__.'/../../vendor/autoload.php';
-
 class RequestClient
 {
     // API constants
@@ -483,7 +481,7 @@ class RequestClient
 
         return $this;
     }
-    
+
     /**
      * Sends a request to the API. Can take parameters to specify specific endpoints.
      *
