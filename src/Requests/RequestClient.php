@@ -220,16 +220,16 @@ class RequestClient
             'getCoursesClassSchedule' => [
                 1 => self::COURSES_CLASS_SCHEDULE,
             ],
-            'getCoursesCatalog' => [
+            'getCoursesSubjectCatalog' => [
                 2 => self::COURSES_SUBJECT_CATALOG,
             ],
-            'getCoursesCatalogSchedule' => [
+            'getCoursesSubjectCatalogSchedule' => [
                 2 => self::COURSES_SUBJECT_CATALOG_SCHEDULE,
             ],
-            'getCoursesCatalogPrerequisites' => [
+            'getCoursesSubjectCatalogPrerequisites' => [
                 2 => self::COURSES_SUBJECT_CATALOG_PREREQUISITES,
             ],
-            'getCoursesCatalogExamSchedule' => [
+            'getCoursesSubjectCatalogExamSchedule' => [
                 2 => self::COURSES_SUBJECT_CATALOG_EXAMSCHEDULE,
             ],
             'getAwardsGrad' => [
@@ -340,7 +340,7 @@ class RequestClient
             'getBuildingsCode' => [
                 1 => self::BUILDINGS_CODE,
             ],
-            'getBuildingRoomCourses' => [
+            'getBuildingsBuildingRoomCourses' => [
                 2 => self::BUILDINGS_BUILDING_ROOM_COURSES,
             ],
             'getBuildingsCodeAccessPoints' => [
