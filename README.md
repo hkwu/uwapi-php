@@ -48,7 +48,7 @@ The configuration options the `Client` constructor takes are listed below.
 | Option | Default | Description |
 | :----: | :-----: | :---------- |
 | `key`  | -       | Your API access key. |
-| `format` | `'json'` | The format you wish the API response to be in. Valid values include `Client::XML` and `Client::JSON`. |
+| `format` | `'json'` | The format you wish the API response to be in. The `Client` provides these values as constants (e.g. `Client::JSON`). |
 | `async` | `true` | True if requests should be made asynchronously. |
 
 ### Making Requests
@@ -165,6 +165,26 @@ $options = [
 $models = $client->batch($endpoints, $params, $options);
 ```
 
+### Accessing Response Data
+
+Returned responses from the API are wrapped in data model classes. All data models provide the `getRawData()` method, which returns the API response as a string.
+
+The JSON (and by extension, GeoJSON) data models provide some additional convenience methods.
+
+```php
+$jsonModel = $client->request(Endpoints::FS_MENU, [], [
+    'format' => Client::JSON,
+    'async' => false,
+]);
+
+$jsonModel->getDecodedData(); // json_decodes the response into an array
+$jsonModel->getMeta(); // equivalent to $jsonModel->getDecodedData()['meta']
+$jsonModel->getData(); // equivalent to $jsonModel->getDecodedData()['data']
+
+// equivalent to $jsonModel->getDecodedData()['data']['date']['year']
+$jsonModel->get(['data', 'date', 'year']);
+```
+
 ### Endpoints
 
 The library provides a number of constants to use when making requests. Most of these constants follow directly from the endpoints as provided in the API documentation, but a few have been tweaked to be more usable.
@@ -261,7 +281,7 @@ The library provides a number of constants to use when making requests. Most of 
 
 ## Contributing
 
-Feel free to mak pull requests for any changes.
+Feel free to make pull requests for any changes.
 
 Just a couple of things:
 * Add unit tests for any new functionality.
