@@ -8,11 +8,13 @@ This library requires PHP 7.0 or greater.
 
 Install the client via [Composer](https://getcomposer.org/).
 
+For global installations,
 ```bash
-# If you installed Composer globally
 composer require hkwu/uwapi-php
+```
 
-# If you installed Composer locally
+For local installations,
+```bash
 php composer.phar require hkwu/uwapi-php
 ```
 
