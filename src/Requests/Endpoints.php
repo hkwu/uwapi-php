@@ -4,9 +4,9 @@ namespace UWaterlooAPI\Requests;
 
 /**
  * Contains API endpoint constants.
- * @package UWaterlooAPI\Requests
  */
-class Endpoints {
+class Endpoints
+{
     // Food Services
     const FS_MENU = 'foodservices/menu';
     const FS_NOTES = 'foodservices/notes';

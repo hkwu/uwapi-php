@@ -1,12 +1,12 @@
 <?php
 
 namespace UWaterlooAPI\Data\JSON;
+
 use UWaterlooAPI\Data\APIModel;
 use UWaterlooAPI\Utils\ArrayUtil;
 
 /**
  * Class that wraps data returned in JSON format.
- * @package UWaterlooAPI\Data\JSON
  */
 class JSONModel extends APIModel
 {
@@ -14,13 +14,14 @@ class JSONModel extends APIModel
     const DATA = 'data';
 
     /**
-     * @var array The decoded JSON value of the API response.
+     * @var array The decoded JSON value of the API response
      */
     private $decodedData;
 
     /**
      * JSONModel constructor.
-     * @param string $data The raw JSON API response.
+     *
+     * @param string $data The raw JSON API response
      */
     public function __construct(string $data)
     {
@@ -31,7 +32,8 @@ class JSONModel extends APIModel
 
     /**
      * Returns the decoded JSON from the API response.
-     * @return array The decoded JSON from the API response.
+     *
+     * @return array The decoded JSON from the API response
      */
     public function getDecodedData(): array
     {
@@ -40,7 +42,8 @@ class JSONModel extends APIModel
 
     /**
      * Returns the value of the 'meta' section of the response data.
-     * @return array The 'meta' section of the API response.
+     *
+     * @return array The 'meta' section of the API response
      */
     public function getMeta(): array
     {
@@ -49,7 +52,8 @@ class JSONModel extends APIModel
 
     /**
      * Returns the value of the 'data' section of the response data.
-     * @return array The 'data' section of the API response.
+     *
+     * @return array The 'data' section of the API response
      */
     public function getData(): array
     {
@@ -59,9 +63,9 @@ class JSONModel extends APIModel
     /**
      * Wrapper method to return data from the model's decoded JSON.
      *
-     * @param array $keys Set of keys to access the decoded data.
+     * @param array $keys Set of keys to access the decoded data
      *
-     * @return mixed Returns value if found, else null.
+     * @return mixed Returns value if found, else null
      */
     public function get(...$keys)
     {

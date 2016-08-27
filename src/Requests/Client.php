@@ -4,16 +4,18 @@ namespace UWaterlooAPI\Requests;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Promise;
 use GuzzleHttp\Promise\RejectedPromise;
-use function GuzzleHttp\Promise\unwrap;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use StringTemplate\Engine;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use UWaterlooAPI\Data\APIModel;
 use UWaterlooAPI\Data\APIModelFactory;
+use function GuzzleHttp\Promise\unwrap;
 
+/**
+ * The library client.
+ */
 class Client
 {
     // API constants
@@ -22,12 +24,12 @@ class Client
     const XML = 'xml';
 
     /**
-     * @var array A set of configuration options for the client.
+     * @var array A set of configuration options for the client
      */
     private $config;
 
     /**
-     * @var array The formats which are valid for making requests with.
+     * @var array The formats which are valid for making requests with
      */
     private $validFormats = [
         self::JSON,
@@ -35,24 +37,24 @@ class Client
     ];
 
     /**
-     * @var OptionsResolver Options resolver for the client.
+     * @var OptionsResolver Options resolver for the client
      */
     private $resolver;
 
     /**
-     * @var Engine The string templating engine.
+     * @var Engine The string templating engine
      */
     private $templateEngine;
 
     /**
-     * @var GuzzleClient The Guzzle client.
+     * @var GuzzleClient The Guzzle client
      */
     private $client;
 
     /**
      * RequestClient constructor.
      *
-     * @param array $config Configuration options for the client.
+     * @param array $config Configuration options for the client
      */
     public function __construct(array $config = [])
     {
@@ -76,8 +78,10 @@ class Client
     /**
      * Computes the resolved options from a given config array
      *   and merges them into the current client configs.
-     * @param array $config Array containing options to change in the config.
-     * @return Client The client.
+     *
+     * @param array $config Array containing options to change in the config
+     *
+     * @return Client The client
      */
     public function setConfig(array $config): Client
     {
@@ -89,14 +93,14 @@ class Client
     /**
      * Sends a request to the API. Can take parameters to specify specific endpoints.
      *
-     * @param string $endpoint The API endpoint.
+     * @param string $endpoint The API endpoint
      * @param array  $params   Array containing parameters to be substituted into
-     *                           the request URL, in the order given.
-     * @param array  $options  Array of options for this request.
+     *                         the request URL, in the order given
+     * @param array  $options  Array of options for this request
      *
-     * @throws \Exception Exception thrown when options array is configured incorrectly.
+     * @throws \Exception Exception thrown when options array is configured incorrectly
      *
-     * @return APIModel|\GuzzleHttp\Promise\PromiseInterface Returns API model object, or a promise if request was asynchronous.
+     * @return APIModel|\GuzzleHttp\Promise\PromiseInterface Returns API model object, or a promise if request was asynchronous
      */
     public function request($endpoint, array $params = [], array $options = [])
     {
@@ -135,13 +139,13 @@ class Client
      * Takes an array of endpoints to hit and their respective parameters,
      *   then sends all the requests concurrently.
      *
-     * @param array $endpoints The API endpoints to hit.
+     * @param array $endpoints The API endpoints to hit
      * @param array $params    The parameters to be substituted into each endpoint stub.
-     *                           Should have the same keys as $endpoints.
-     * @param array $options   Options to be applied to the entire batch of requests.
+     *                         Should have the same keys as $endpoints
+     * @param array $options   Options to be applied to the entire batch of requests
      *
      * @return array Array of models built using returned data for each endpoint given as input.
-     *                 Array keys are preserved as given in $endpoints.
+     *               Array keys are preserved as given in $endpoints
      */
     public function batch(array $endpoints, array $params = [], array $options = []): array
     {
@@ -170,9 +174,10 @@ class Client
 
     /**
      * Decodes the body of a Guzzle response.
-     * @param StreamInterface $responseBody The Guzzle response body.
      *
-     * @return string The body in string form.
+     * @param StreamInterface $responseBody The Guzzle response body
+     *
+     * @return string The body in string form
      */
     private function decodeResponseBody(StreamInterface $responseBody): string
     {
@@ -182,10 +187,11 @@ class Client
     /**
      * Gets the value of a certain option, picking from a provided
      *   options array or the client's currently defined config.
-     * @param array  $options The array of options to pick from.
-     * @param string $option The specific option to resolve.
      *
-     * @return mixed The value of the resolved option.
+     * @param array  $options The array of options to pick from
+     * @param string $option  The specific option to resolve
+     *
+     * @return mixed The value of the resolved option
      */
     private function getDefaultOption(array $options, string $option)
     {
@@ -194,11 +200,12 @@ class Client
 
     /**
      * Returns the request URL for an API call.
-     * @param string $endpoint The API endpoint to call.
-     * @param array  $params Parameters to substitute into the API endpoint string.
-     * @param string $format The format of the response.
      *
-     * @return string The request URL.
+     * @param string $endpoint The API endpoint to call
+     * @param array  $params   Parameters to substitute into the API endpoint string
+     * @param string $format   The format of the response
+     *
+     * @return string The request URL
      */
     private function buildRequestURL($endpoint, array $params, $format): string
     {

@@ -4,18 +4,18 @@ namespace UWaterlooAPI\Data;
 
 /**
  * Base class for all API response data models.
- * @package UWaterlooAPI\Data
  */
 abstract class APIModel
 {
     /**
-     * @var string The raw string response returned from the API.
+     * @var string The raw string response returned from the API
      */
     private $rawData;
 
     /**
      * APIModel constructor.
-     * @param string $rawData Raw data returned from the API.
+     *
+     * @param string $rawData Raw data returned from the API
      */
     public function __construct(string $rawData)
     {
@@ -24,7 +24,8 @@ abstract class APIModel
 
     /**
      * Returns the raw data received from the API response.
-     * @return string The raw data returned from the API.
+     *
+     * @return string The raw data returned from the API
      */
     public function getRawData()
     {
