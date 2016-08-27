@@ -2,9 +2,20 @@
 
 namespace UWaterlooAPI\Utils;
 
+/**
+ * Contains some utility methods for handling array data.
+ * @package UWaterlooAPI\Utils
+ */
 class ArrayUtil
 {
-    public static function getVal(array $array, $keys)
+    /**
+     * Recursively traverses an array and returns a deeply
+     *   nested value specified by an array of keys.
+     * @param array $array The array to get the value from.
+     * @param array $keys The keys to traverse through.
+     * @return mixed The nested value specified by $keys. Returns null when traversal cannot continue.
+     */
+    public static function getVal(array $array, array $keys)
     {
         foreach ($keys as $key) {
             if (!isset($array[$key])) {
@@ -15,22 +26,5 @@ class ArrayUtil
         }
 
         return $array;
-    }
-
-    /**
-     * Filters elements from an array of associative arrays that don't contain a certain key/value pair.
-     *
-     * @param array $array       The array of associative arrays to filter.
-     * @param mixed $prop        The key to filter by.
-     * @param mixed $expectedVal The expected value which given key maps to.
-     *
-     * @return array The filtered array.
-     */
-    public static function filterByProperty(array $array, $prop, $expectedVal)
-    {
-        // todo handle exceptions
-        return array_filter($array, function ($val, $key) use ($prop, $expectedVal) {
-            return $val[$prop] === $expectedVal;
-        }, ARRAY_FILTER_USE_BOTH);
     }
 }
