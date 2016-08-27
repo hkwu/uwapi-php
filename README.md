@@ -1,6 +1,6 @@
 # uwapi-php
 
-A PHP wrapper for the University of Waterloo's Open Data API supporting asynchronous requests through [Guzzle](http://docs.guzzlephp.org/en/latest/).
+A PHP wrapper for the University of Waterloo's [Open Data API](https://uwaterloo.ca/api/) supporting asynchronous requests through [Guzzle](http://docs.guzzlephp.org/en/latest/).
 
 This library requires PHP 7.0 or greater.
 
