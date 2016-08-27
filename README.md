@@ -182,7 +182,7 @@ $jsonModel->getMeta(); // equivalent to $jsonModel->getDecodedData()['meta']
 $jsonModel->getData(); // equivalent to $jsonModel->getDecodedData()['data']
 
 // equivalent to $jsonModel->getDecodedData()['data']['date']['year']
-$jsonModel->get(['data', 'date', 'year']);
+$jsonModel->get('data', 'date', 'year');
 ```
 
 ### Endpoints
