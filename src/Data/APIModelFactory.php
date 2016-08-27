@@ -4,7 +4,7 @@ namespace UWaterlooAPI\Data;
 
 use UWaterlooAPI\Data\JSON\JSONModel;
 use UWaterlooAPI\Data\XML\XMLModel;
-use UWaterlooAPI\Requests\Client;
+use UWaterlooAPI\Client;
 
 /**
  * Handles construction of API response models.
@@ -23,6 +23,7 @@ class APIModelFactory
     {
         switch ($format) {
             case Client::JSON:
+            case Client::GEOJSON:
                 return new JSONModel($data);
             case Client::XML:
                 return new XMLModel($data);

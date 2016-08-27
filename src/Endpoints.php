@@ -1,6 +1,6 @@
 <?php
 
-namespace UWaterlooAPI\Requests;
+namespace UWaterlooAPI;
 
 /**
  * Contains API endpoint constants.

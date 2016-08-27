@@ -5,8 +5,8 @@ namespace Tests\Requests;
 use Tests\APITestCase;
 use UWaterlooAPI\Data\JSON\JSONModel;
 use UWaterlooAPI\Data\XML\XMLModel;
-use UWaterlooAPI\Requests\Client;
-use UWaterlooAPI\Requests\Endpoints;
+use UWaterlooAPI\Client;
+use UWaterlooAPI\Endpoints;
 
 class RequestClientTest extends APITestCase
 {
@@ -32,6 +32,11 @@ class RequestClientTest extends APITestCase
     {
         // test with JSON format
         $jsonModel = $this->client->request(Endpoints::FS_OUTLETS);
+        $this->assertInstanceOf(JSONModel::class, $jsonModel);
+        $this->assertNotEmpty($jsonModel->getDecodedData());
+
+        // test with GeoJSON format
+        $jsonModel = $this->client->request(Endpoints::BUILDINGS_LIST);
         $this->assertInstanceOf(JSONModel::class, $jsonModel);
         $this->assertNotEmpty($jsonModel->getDecodedData());
 
@@ -74,6 +79,18 @@ class RequestClientTest extends APITestCase
         foreach ($jsonModels as $jsonModel) {
             $this->assertInstanceOf(JSONModel::class, $jsonModel);
             $this->assertNotEmpty($jsonModel->getDecodedData());
+        }
+
+        // test with GeoJSON format
+        $options = [
+            'format' => Client::GEOJSON,
+        ];
+
+        $geoJsonModels = $this->client->batch($endpoints, [], $options);
+
+        foreach ($geoJsonModels as $geoJsonModel) {
+            $this->assertInstanceOf(JSONModel::class, $geoJsonModel);
+            $this->assertNotEmpty($geoJsonModel->getRawData());
         }
 
         // test with XML format

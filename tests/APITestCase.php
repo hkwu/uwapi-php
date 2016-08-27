@@ -5,7 +5,7 @@ namespace Tests;
 use Dotenv\Dotenv;
 use Faker\Factory;
 use PHPUnit\Framework\TestCase;
-use UWaterlooAPI\Requests\Client;
+use UWaterlooAPI\Client;
 
 class APITestCase extends TestCase
 {

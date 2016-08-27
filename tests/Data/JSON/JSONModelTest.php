@@ -4,8 +4,8 @@ namespace Tests\Data\JSON;
 
 use Tests\Data\DataTestCase;
 use UWaterlooAPI\Data\JSON\JSONModel;
-use UWaterlooAPI\Requests\Client;
-use UWaterlooAPI\Requests\Endpoints;
+use UWaterlooAPI\Client;
+use UWaterlooAPI\Endpoints;
 
 class JSONModelTest extends DataTestCase
 {

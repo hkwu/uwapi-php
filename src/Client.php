@@ -1,6 +1,6 @@
 <?php
 
-namespace UWaterlooAPI\Requests;
+namespace UWaterlooAPI;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\RequestException;
@@ -21,6 +21,7 @@ class Client
     // API constants
     const BASE_API_URL = 'https://api.uwaterloo.ca/v2/';
     const JSON = 'json';
+    const GEOJSON = 'geojson';
     const XML = 'xml';
 
     /**
@@ -33,6 +34,7 @@ class Client
      */
     private $validFormats = [
         self::JSON,
+        self::GEOJSON,
         self::XML,
     ];
 
@@ -66,7 +68,8 @@ class Client
             'async' => true,
         ])->setAllowedTypes('key', 'string')
           ->setAllowedTypes('format', 'string')
-          ->setAllowedTypes('async', 'bool');
+          ->setAllowedTypes('async', 'bool')
+          ->setAllowedValues('format', $this->validFormats);
 
         $this->config = $this->resolver->resolve($config);
         $this->templateEngine = new Engine();
