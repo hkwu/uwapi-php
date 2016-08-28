@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Dotenv\Dotenv;
 use Faker\Factory;
 use PHPUnit\Framework\TestCase;
 use UWaterlooAPI\Client;
@@ -16,10 +15,6 @@ class APITestCase extends TestCase
 
     public static function setUpBeforeClass()
     {
-        $dotenv = new Dotenv(__DIR__.'/..');
-        $dotenv->load();
-        $dotenv->required('API_KEY')->notEmpty();
-
         self::$faker = Factory::create();
         self::$faker->seed(self::FAKER_SEED);
     }
