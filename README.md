@@ -1,5 +1,9 @@
 # uwapi-php
 
+[![Latest Stable Version](https://poser.pugx.org/hkwu/uwapi-php/v/stable)](https://packagist.org/packages/hkwu/uwapi-php)
+[![Build Status](https://travis-ci.org/hkwu/uwapi-php.svg?branch=master)](https://travis-ci.org/hkwu/uwapi-php)
+[![License](https://poser.pugx.org/hkwu/uwapi-php/license)](https://packagist.org/packages/hkwu/uwapi-php)
+
 A PHP wrapper for the University of Waterloo's [Open Data API](https://uwaterloo.ca/api/) supporting asynchronous requests through [Guzzle](http://docs.guzzlephp.org/en/latest/).
 
 This library requires PHP 7.0 or greater.
@@ -285,5 +289,5 @@ Feel free to make pull requests for any changes.
 
 Just a couple of things:
 * Add unit tests for any new functionality.
-  * You can run the entire test suite using `vendor/bin/phpunit tests` from the project root.
+  * You can run the entire test suite using `vendor/bin/phpunit` from the project root.
 * Follow the [PSR-1](http://www.php-fig.org/psr/psr-1/) and [PSR-2](http://www.php-fig.org/psr/psr-2/) style guides.
