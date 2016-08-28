@@ -259,7 +259,7 @@ The library provides a number of constants to use when making requests. Most of 
 | `POI_PHOTOSPHERES` | `'poi/photospheres'` |
 | `POI_DEFIBRILLATORS` | `'poi/defibrillators'` |
 | `POI_CONSTRUCTIONSITES` | `'poi/constructionsites'` |
-| `POI_ACCESSIBLEENTRACNCES` | `'poi/accessibleentrances'` |
+| `POI_ACCESSIBLEENTRANCES` | `'poi/accessibleentrances'` |
 | `POI_VISITORINFORMATION` | `'poi/visitorinformation'` |
 | `PARKING_WATPARK` | `'parking/watpark'` |
 | `PARKING_LOTS_METER` | `'parking/lots/meter'` |

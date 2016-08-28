@@ -5,7 +5,7 @@ namespace UWaterlooAPI;
 /**
  * Contains API endpoint constants.
  */
-class Endpoints
+abstract class Endpoints
 {
     // Food Services
     const FS_MENU = 'foodservices/menu';
@@ -104,7 +104,7 @@ class Endpoints
     const POI_PHOTOSPHERES = 'poi/photospheres';
     const POI_DEFIBRILLATORS = 'poi/defibrillators';
     const POI_CONSTRUCTIONSITES = 'poi/constructionsites';
-    const POI_ACCESSIBLEENTRACNCES = 'poi/accessibleentrances';
+    const POI_ACCESSIBLEENTRANCES = 'poi/accessibleentrances';
     const POI_VISITORINFORMATION = 'poi/visitorinformation';
 
     // parking
