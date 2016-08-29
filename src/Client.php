@@ -198,7 +198,7 @@ class Client
      */
     private function getDefaultOption(array $options, string $option)
     {
-        return isset($options[$option]) ? $options[$option] : $this->config[$option];
+        return $options[$option] ?? $this->config[$option];
     }
 
     /**
