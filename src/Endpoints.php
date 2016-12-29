@@ -77,7 +77,6 @@ abstract class Endpoints
 
     // resources
     const RESOURCES_TUTORS = 'resources/tutors';
-    const RESOURCES_PRINTERS = 'resources/printers';
     const RESOURCES_INFOSESSIONS = 'resources/infosessions';
     const RESOURCES_GOOSEWATCH = 'resources/goosewatch';
     const RESOURCES_SUNSHINELIST = 'resources/sunshinelist';
