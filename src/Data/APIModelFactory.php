@@ -19,7 +19,7 @@ class APIModelFactory
      *
      * @return APIModel
      */
-    public static function makeModel($format, $data)
+    public static function makeModel(string $format, string $data)
     {
         switch ($format) {
             case Client::JSON:
@@ -28,7 +28,7 @@ class APIModelFactory
             case Client::XML:
                 return new XMLModel($data);
             default:
-                return;
+                return null;
         }
     }
 }

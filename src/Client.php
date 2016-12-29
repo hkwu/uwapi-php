@@ -105,7 +105,7 @@ class Client
      *
      * @return APIModel|\GuzzleHttp\Promise\PromiseInterface Returns API model object, or a promise if request was asynchronous
      */
-    public function request($endpoint, array $params = [], array $options = [])
+    public function request(string $endpoint, array $params = [], array $options = [])
     {
         $format = $this->getDefaultOption($options, 'format');
         $async = $this->getDefaultOption($options, 'async');
@@ -210,7 +210,7 @@ class Client
      *
      * @return string The request URL
      */
-    private function buildRequestURL($endpoint, array $params, $format): string
+    private function buildRequestURL(string $endpoint, array $params, string $format): string
     {
         $queryStringParams = [
             'key' => $this->config['key'],

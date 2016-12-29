@@ -14,7 +14,7 @@ class XMLModel extends APIModel
      *
      * @param string $rawData Raw data returned from the API
      */
-    public function __construct($rawData)
+    public function __construct(string $rawData)
     {
         parent::__construct($rawData);
     }
