@@ -242,7 +242,6 @@ The library provides a number of constants to use when making requests. Most of 
 | `TERMS_TERM_SUBJECT_ENROLLMENT` | `'terms/{term}/{subject}/enrollment'` |
 | `TERMS_TERM_INFOSESSIONS` | `'terms/{term}/infosessions'` |
 | `RESOURCES_TUTORS` | `'resources/tutors'` |
-| `RESOURCES_PRINTERS` | `'resources/printers'` |
 | `RESOURCES_INFOSESSIONS` | `'resources/infosessions'` |
 | `RESOURCES_GOOSEWATCH` | `'resources/goosewatch'` |
 | `RESOURCES_SUNSHINELIST` | `'resources/sunshinelist'` |
